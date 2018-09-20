@@ -1,0 +1,16 @@
+<view class="process-y">
+
+  <block wx:for="{{5}}">
+
+    <view class="process-item">
+      <view class="item-date">
+        <view>2018-06-01</view>
+        <view>15:30</view>
+      </view>
+      <view class="item-icon"></view>
+      <view class="item-content">系统正在处理,请稍后,</view>
+    </view>
+
+  </block>
+
+</view>

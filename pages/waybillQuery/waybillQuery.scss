@@ -1,0 +1,68 @@
+@import "../../common";
+
+.query {
+  display: flex;
+  align-items: center;
+  margin: rpx(20);
+
+  .search {
+    flex: 1;
+    margin: rpx(15);
+    padding: rpx(10) rpx(20);
+    box-shadow: 0 0 rpx(15) 0 rgba(#999, 0.3);
+    border-radius: rpx(30);
+    font-size: rpx(26);
+    color: #999999;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rpx(120);
+    height: rpx(80);
+    color: #ffffff;
+    border-radius: rpx(10);
+    background-color: #007bff;
+  }
+}
+
+.process-y {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    left: rpx(200);
+    height: 100%;
+    width: 1px;
+    background-color: #999;
+  }
+  .process-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-bottom: rpx(25);
+    .item-date {
+      flex: none;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: rpx(200);
+      color: #666;
+      font-size: rpx(28);
+    }
+    .item-icon {
+      flex: none;
+      height: rpx(18);
+      width: rpx(18);
+      margin-left: rpx(-6);
+      border-radius: 50%;
+      background-color: #999;
+    }
+    .item-content {
+      padding: 0 rpx(15);
+      font-size: rpx(28);
+      color: #999999;
+    }
+  }
+}

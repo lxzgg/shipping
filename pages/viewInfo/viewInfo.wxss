@@ -1,0 +1,62 @@
+.query {
+  display: flex;
+  align-items: center;
+  margin: 20rpx;
+}
+.query input {
+  flex: 1;
+  margin-right: 20rpx;
+  padding: 5rpx 15rpx;
+  border-radius: 10rpx;
+  border: 1px solid #ccc;
+}
+.query .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120rpx;
+  height: 80rpx;
+  color: #ffffff;
+  border-radius: 10rpx;
+  background-color: #007bff;
+}
+
+.process-y {
+  position: relative;
+}
+.process-y:before {
+  content: "";
+  position: absolute;
+  left: 200rpx;
+  height: 100%;
+  width: 1px;
+  background-color: #999;
+}
+.process-y .process-item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 15rpx;
+}
+.process-y .process-item .item-date {
+  flex: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 200rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+.process-y .process-item .item-icon {
+  flex: none;
+  height: 18rpx;
+  width: 18rpx;
+  margin-left: -6rpx;
+  border-radius: 50%;
+  background-color: #999;
+}
+.process-y .process-item .item-content {
+  padding: 0 15rpx;
+  font-size: 28rpx;
+  color: #999999;
+}

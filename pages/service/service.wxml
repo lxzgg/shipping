@@ -1,0 +1,44 @@
+<view class="tab" bindtap="switch">
+  <view class="{{tabIndex===0?'select':''}}" data-index="{{0}}">已签收(1)</view>
+  <view class="{{tabIndex===1?'select':''}}" data-index="{{1}}">未签收(2)</view>
+</view>
+
+<navigator hover-class="none" url="/pages/waybillQuery/waybillQuery" class="search">
+  查询运单号
+</navigator>
+
+<view class="list">
+
+  <block wx:for="{{5}}">
+    <view class="item">
+
+      <view class="number">
+        <view>单号:123456789</view>
+        <view>2018-8-20 14:57签收</view>
+      </view>
+
+      <view class="info">
+
+        <view>
+          <view class="address">深圳</view>
+          <view class="person">寄件人</view>
+        </view>
+
+        <view class="info-arrow">
+          <view>已签收</view>
+          <image class="arrow-bg" src="/image/arrow.png"></image>
+        </view>
+
+        <view>
+          <view class="address">北京</view>
+          <view class="person">收件人</view>
+        </view>
+
+        <navigator url="/pages/viewInfo/viewInfo" class="view">查看物流</navigator>
+
+      </view>
+
+    </view>
+  </block>
+
+</view>

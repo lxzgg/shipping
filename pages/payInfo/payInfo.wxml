@@ -1,0 +1,39 @@
+<view class="list">
+
+  <block wx:for="{{5}}">
+    <view class="item">
+
+      <view class="number">
+        <view>单号:123456789</view>
+        <!--<view>2018-8-20 14:57签收</view>-->
+      </view>
+
+      <view class="info">
+
+        <view>
+          <view class="address">深圳</view>
+          <view class="person">寄件人</view>
+        </view>
+
+        <view class="info-arrow">
+          <view>已签收</view>
+          <image class="arrow-bg" src="/image/arrow.png"></image>
+          <view class="price">
+            <text>总价:45</text>
+            <text>应付:20.5</text>
+          </view>
+        </view>
+
+        <view>
+          <view class="address">北京</view>
+          <view class="person">收件人</view>
+        </view>
+
+        <view class="view">未支付</view>
+
+      </view>
+
+    </view>
+  </block>
+
+</view>

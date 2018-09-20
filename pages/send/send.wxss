@@ -1,0 +1,96 @@
+.address {
+  margin: 30rpx;
+  padding: 0 30rpx;
+  box-shadow: 0 0 10rpx 0 rgba(187, 187, 187, 0.5);
+}
+.address > view {
+  padding: 20rpx 0;
+}
+.address .info {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+.address .info .name {
+  width: 200rpx;
+  border-right: 1px solid #eee;
+}
+.address .info .phone {
+  flex: 1;
+  padding-left: 15rpx;
+}
+.address .linkage {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  color: #808080;
+}
+.address .linkage .picker {
+  flex: 1;
+}
+.address .linkage .icon {
+  flex: none;
+  margin-left: 30rpx;
+}
+
+.default-address {
+  margin-left: 30rpx;
+}
+
+.smart-address {
+  margin: 30rpx 30rpx 0 30rpx;
+  padding: 20rpx;
+  box-shadow: 0 0 10rpx 0 rgba(187, 187, 187, 0.5);
+}
+.smart-address .title {
+  display: flex;
+  align-items: center;
+  color: #666;
+}
+.smart-address .title .icon {
+  color: #E34756;
+  font-size: 50rpx;
+  margin-right: 10rpx;
+}
+.smart-address .discern {
+  margin: 20rpx 0;
+}
+.smart-address .discern textarea {
+  box-sizing: border-box;
+  padding: 20rpx;
+  width: 100%;
+  height: 200rpx;
+  box-shadow: 0 0 10rpx 0 rgba(187, 187, 187, 0.5);
+}
+.smart-address .operation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.smart-address .operation .photo {
+  display: flex;
+  align-items: center;
+  color: #7E92C1;
+}
+.smart-address .operation .photo .icon {
+  font-size: 50rpx;
+  margin-right: 10rpx;
+}
+.smart-address .operation .submit {
+  padding: 15rpx 30rpx;
+  color: #ffffff;
+  border-radius: 10rpx;
+  background-color: #007bff;
+}
+
+.save {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: #007bff;
+}

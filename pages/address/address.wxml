@@ -1,0 +1,78 @@
+<view class="search">
+  <input value="{{searchVal}}" placeholder="请输入省份/城市/市区搜索" bindinput="search"/>
+  <block wx:if="{{!searchVal}}">
+    <view class="icon icon-search"></view>
+  </block>
+  <block wx:else>
+    <view class="icon icon-clear" bindtap="clear"></view>
+  </block>
+</view>
+
+<block wx:if="{{!search}}">
+  <view class="hot">
+    <view class="hot-title">热门城市</view>
+    <view class="hot-city">
+      <block wx:for="{{hot}}" wx:key="{{index}}">
+        <view data-name="{{item}}" bindtap="selectHot">{{item}}</view>
+      </block>
+    </view>
+  </view>
+
+  <view class="linkage">
+
+    <view class="title">
+      <view>省份</view>
+      <view>城市</view>
+      <view>区县</view>
+    </view>
+
+    <view class="list">
+
+      <picker-view indicator-class="indicator" mask-class="mask" value="{{selectProvince}}" bindchange="provinceChange">
+        <picker-view-column>
+          <block wx:for="{{provinces}}" wx:key="{{item.code}}">
+            <view class="{{selectProvince[0]===index?'select':''}}">{{item.name}}</view>
+          </block>
+        </picker-view-column>
+      </picker-view>
+
+      <picker-view indicator-class="indicator" mask-class="mask" value="{{selectCity}}" bindchange="cityChange">
+        <picker-view-column>
+          <block wx:for="{{cities}}" wx:key="{{item.code}}">
+            <view class="{{selectCity[0]===index?'select':''}}">{{item.name}}</view>
+          </block>
+        </picker-view-column>
+      </picker-view>
+
+      <picker-view indicator-class="indicator" mask-class="mask" value="{{selectArea}}" bindchange="areaChange">
+        <picker-view-column>
+          <block wx:for="{{areas}}" wx:key="{{item.code}}">
+            <view class="{{selectArea[0]===index?'select':''}}">{{item.name}}</view>
+          </block>
+        </picker-view-column>
+      </picker-view>
+
+    </view>
+
+  </view>
+
+  <view class="define" bindtap="define">确定</view>
+</block>
+
+<block wx:if="{{search}}">
+  <view class="search-results">
+    <scroll-view class="results" scroll-y>
+      <block wx:for="{{search.list}}" wx:key="{{index}}">
+        <view data-item="{{item}}" bindtap="selectSearch">
+          <text>{{item.arr[0]}}</text>
+          <text style="color: red;">{{search.name}}</text>
+          <text>{{item.arr[1]}}</text>
+          <block wx:if="{{item.arr[2]}}">
+            <text>{{search.name}}</text>
+            <text>{{item.arr[2]}}</text>
+          </block>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</block>

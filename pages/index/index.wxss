@@ -1,0 +1,330 @@
+.title {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+}
+.title .icon {
+  color: #007bff;
+}
+.title .title-name {
+  font-size: 28rpx;
+}
+
+.send-cell {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+}
+.send-cell .cell-name {
+  flex: none;
+  width: 62rpx;
+  height: 62rpx;
+  line-height: 62rpx;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 40rpx;
+}
+.send-cell .cell-info {
+  flex: 1;
+  margin-left: 20rpx;
+  border-right: 1px solid #ddd;
+  font-size: 26rpx;
+  color: #999;
+}
+.send-cell .cell-info .info {
+  font-size: 28rpx;
+}
+.send-cell .cell-info .info-desc {
+  font-size: 28rpx;
+  color: #999;
+}
+.send-cell .cell-address {
+  flex: none;
+  padding-left: 42rpx;
+  font-size: 26rpx;
+}
+
+.send-cell .sender {
+  color: #ffffff;
+  background-color: #000;
+}
+.send-cell .consignee {
+  color: #ffffff;
+  background-color: #007bff;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 60rpx 30rpx 30rpx;
+  color: #666666;
+  position: relative;
+  position: relative;
+}
+.cell::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+.cell::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 8rpx);
+  right: 19rpx;
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-width: 4rpx 4rpx 0 0;
+  border-style: solid;
+  border-color: #C0C0C0;
+  transform: rotateZ(45deg);
+}
+.cell .cell-name {
+  font-size: 26rpx;
+}
+.cell .cell-content {
+  color: #999;
+  font-size: 26rpx;
+}
+
+.type-cell {
+  display: flex;
+  color: #666;
+  font-size: 26rpx;
+}
+.type-cell > view {
+  flex: 1;
+  padding: 20rpx 30rpx;
+}
+.type-cell .cargoInfo {
+  position: relative;
+}
+.type-cell .cargoInfo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  box-sizing: border-box;
+  border-right: 1px solid #ddd;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+.input-cell {
+  padding: 30rpx 60rpx 30rpx 30rpx;
+}
+.input-cell textarea {
+  width: 100%;
+  height: 150rpx;
+}
+
+.fixed-footer {
+  display: flex;
+  width: 600rpx;
+  height: 70rpx;
+  padding: 15rpx;
+  margin: 0 auto 30rpx;
+  background-color: #4599f2;
+  border-radius: 70rpx;
+}
+.fixed-footer view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+.fixed-footer .footer-price {
+  flex: 1;
+  flex-direction: column;
+  border-right: 1px solid #eee;
+}
+.fixed-footer .footer-price .price {
+  font-size: 26rpx;
+}
+.fixed-footer .footer-price .price-terms {
+  font-size: 20rpx;
+  color: red;
+}
+.fixed-footer .footer-btn {
+  font-size: 28rpx;
+  flex: 1;
+}
+
+.fill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 400rpx;
+  transition: all 0.25s;
+  background-color: #fff;
+}
+
+.modal .select {
+  height: 400rpx;
+  display: flex;
+}
+.modal .select .date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 200rpx;
+  background-color: #eeeeee;
+}
+.modal .select .date > view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.modal .select .date > view > view:first-child {
+  font-size: 30rpx;
+  color: #53a3ff;
+}
+.modal .select .date > view > view:last-child {
+  font-size: 26rpx;
+  color: #c7c7c7;
+}
+.modal .select .date-selected {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+}
+.modal .select .time {
+  flex: 1;
+  padding-top: 15rpx;
+  text-align: center;
+  color: #666;
+}
+.modal .select .time view {
+  padding: 20rpx 0;
+}
+.modal .select .time .selected {
+  color: #53a3ff;
+}
+
+.hide {
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350rpx;
+  height: 80rpx;
+  margin: 30rpx auto;
+  border-radius: 80rpx;
+  color: #ffffff;
+  background-color: #4599f2;
+}
+
+.goods {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 510rpx;
+  transition: all 0.25s;
+  background-color: #fff;
+}
+
+.goods .title {
+  display: flex;
+  align-items: center;
+}
+.goods .title view:first-child {
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 8rpx;
+  margin-right: 15rpx;
+  background-color: #53a3ff;
+}
+.goods .goods-name {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0 50rpx;
+  color: #999999;
+}
+.goods .goods-name view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 15rpx 0;
+  border-radius: 30rpx;
+  border: 1px solid #ccc;
+}
+.goods .goods-name .selected {
+  border: 1px solid #53a3ff;
+  color: #fff;
+  background-color: #53a3ff;
+}
+.goods .number {
+  display: flex;
+  justify-content: space-around;
+}
+.goods .number > view {
+  display: flex;
+  align-items: center;
+}
+.goods .number .name {
+  flex: none;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.val-number {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  border-radius: 10rpx;
+  border: solid 1px #ccc;
+}
+.val-number .operation {
+  width: 60rpx;
+  height: 100%;
+  line-height: 55rpx;
+  text-align: center;
+  color: #999;
+}
+.val-number .operation:first-child {
+  line-height: 50rpx;
+  border-right: 1px solid #ccc;
+}
+.val-number .operation:last-child {
+  border-left: 1px solid #ccc;
+}
+.val-number input {
+  width: 80rpx;
+  height: 4rpx !important;
+  text-align: center;
+}

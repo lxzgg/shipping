@@ -1,0 +1,28 @@
+<view class="service">
+  <view>保价服务</view>
+  <view class="value">
+    <input placeholder="请填写货物实际价值"/>元
+  </view>
+</view>
+
+<view class="service">
+  <view>物控服务</view>
+  <view class="value">
+    <radio-group bindchange="material_control">
+      <radio value="是" color="#007bff" checked>是</radio>
+      <radio value="否" color="#007bff">否</radio>
+    </radio-group>
+  </view>
+</view>
+
+<view class="service">
+  <view>签收单服务</view>
+  <view class="value">
+    <radio-group bindchange="signing">
+      <radio value="无需返单" color="#007bff" checked>无需返单</radio>
+      <radio value="需返单" color="#007bff">需返单</radio>
+    </radio-group>
+  </view>
+</view>
+
+<view class="btn">保存</view>

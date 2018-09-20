@@ -1,0 +1,32 @@
+@import "../../common";
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: rpx(150);
+
+  display: flex;
+  align-items: center;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rpx(300);
+    height: rpx(80);
+    border-radius: rpx(80);
+    font-size: rpx(30);
+    cover-view {
+      width: 100%;
+    }
+  }
+  button:first-child {
+    color: red;
+    background-color: #ffffff;
+  }
+  button:last-child {
+    color: #ffffff;
+    background-color: red;
+  }
+}

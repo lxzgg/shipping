@@ -1,0 +1,55 @@
+.addressList {
+  padding: 30rpx 15rpx;
+}
+.addressList .title {
+  display: flex;
+  align-items: center;
+}
+.addressList .title view:first-child {
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 8rpx;
+  margin-right: 15rpx;
+  background-color: #53a3ff;
+}
+.addressList .list .item {
+  margin: 15rpx 0;
+  box-shadow: 0 0 15rpx 0 rgba(150, 150, 150, 0.35);
+  border-radius: 15rpx;
+}
+.addressList .list .item > view:first-child {
+  padding: 30rpx;
+}
+.addressList .list .item > view:first-child > view:last-child {
+  margin-top: 15rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+.addressList .list .item > view:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15rpx 30rpx;
+  border-top: 1px solid #eee;
+  color: #666;
+}
+.addressList .list .item .icon {
+  margin-right: 15rpx;
+}
+.addressList .list .item .icon-select {
+  color: red;
+}
+
+.add {
+  position: fixed;
+  right: 50rpx;
+  bottom: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #007bff;
+}

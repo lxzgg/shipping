@@ -1,0 +1,45 @@
+<view class="address">
+  <view class="info">
+    <input class="name" placeholder="姓名" value="{{name}}" data-name="name"
+           bindblur="getInput" bindinput="getInput"/>
+    <input class="phone" placeholder="手机号或0开头固话-分机号" value="{{phone}}"
+           data-name="phone" bindblur="getInput" bindinput="getInput"/>
+  </view>
+  <view class="linkage" bindtap="selectAddress">
+
+    <view class="picker">
+      {{address[0]}} {{address[1]}} {{address[2]}}
+    </view>
+
+    <view class="icon icon-nav" catchtap="nav"></view>
+  </view>
+  <view>
+    <input placeholder="详细地址(详细到门牌)" value="{{details}}" data-name="details" bindblur="getInput" bindinput="getInput"/>
+  </view>
+</view>
+
+<!--<view class="default-address">-->
+<!--<radio color="#007bff" checked="{{isDefault}}" bindtap="radioChange">-->
+<!--设为默认地址-->
+<!--</radio>-->
+<!--</view>-->
+
+<view class="smart-address">
+  <view class="title">
+    <!--<icon class="icon icon-order"></icon>-->
+    智能地址填写
+  </view>
+  <view class="discern">
+    <textarea placeholder="粘贴整段地址，自动识别姓名、电话和地址，例：顺小哥，13888888888，广东省深圳市南山区某街道某某大厦001号"
+              data-name="discern" bindblur="getInput" bindinput="getInput"></textarea>
+  </view>
+  <view class="operation">
+    <view class="photo" bindtap="imgDiscern">
+      <icon class="icon icon-photo"></icon>
+      上传图片
+    </view>
+    <view class="submit" bindtap="discern">提交</view>
+  </view>
+</view>
+
+<view class="save" bindtap="save">确定</view>

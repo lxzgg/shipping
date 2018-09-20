@@ -1,0 +1,192 @@
+<!--<view class="search">-->
+<!--<view>请输入单号</view>-->
+<!--<view class="icon icon-search"></view>-->
+<!--</view>-->
+
+<!--<swiper autoplay circular>-->
+<!--<block wx:for="{{3}}" wx:key="{{index}}">-->
+<!--<swiper-item>-->
+<!--<image mode="scaleToFill" src="https://picsum.photos/200"></image>-->
+<!--</swiper-item>-->
+<!--</block>-->
+<!--</swiper>-->
+<view class="title border">
+  <view class="icon icon-line"></view>
+  <view class="title-name">寄件</view>
+</view>
+
+<view class="send-cell border">
+  <view class="cell-name sender">寄</view>
+  <view class="cell-info" bindtap="send">
+    <block wx:if="{{!send}}">
+      <view class="info-desc">点击填写寄件地址</view>
+    </block>
+    <block wx:else>
+      {{send.NAME}}，{{send.PROVINCE + send.CITY + send.AREA + send.ADDRESS_DETAIL}}
+    </block>
+  </view>
+  <view class="cell-address" bindtap="sendList">地址簿</view>
+</view>
+
+<view class="send-cell border">
+  <view class="cell-name consignee">收</view>
+  <view class="cell-info" bindtap="take">
+    <block wx:if="{{!take}}">
+      <view class="info-desc">点击填写收件地址</view>
+    </block>
+    <block wx:else>
+      {{take.NAME}}，{{take.PROVINCE + take.CITY + take.AREA + take.ADDRESS_DETAIL}}
+    </block>
+  </view>
+  <view class="cell-address" bindtap="takeList">地址簿</view>
+</view>
+
+<view class="cell" bindtap="homeTime">
+  <view class="cell-name">上门时间</view>
+  <view class="cell-content">
+    {{HomeTime?HomeTime:"今天内一小时"}}
+  </view>
+</view>
+
+<view class="type-cell border">
+  <view class="cargoInfo arrow" bindtap="goods">
+    <view>货物信息(必填)</view>
+    <block wx:if="{{goodsShow}}">
+      <view>
+        <view>{{goodsName}}</view>
+        <view>{{number}}件</view>
+        <view>{{weight}}KG</view>
+      </view>
+    </block>
+  </view>
+  <view class="service arrow">
+    <view>增值服务(选填)</view>
+    <block wx:if="{{serviceShow}}">
+      <view>
+        <view>保价:4000元</view>
+        <view>物控</view>
+        <view>原件回单</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<view class="cell" bindtap="payWay">
+  <view class="cell-name">付款方式</view>
+  <view class="cell-content">{{payWay.list[payWay.index]}}</view>
+</view>
+<view class="cell" bindtap="product">
+  <view class="cell-name">产品</view>
+  <view class="cell-content">{{product.list[product.index]}}</view>
+</view>
+<view class="cell" bindtap="service">
+  <view class="cell-name">服务类型</view>
+  <view class="cell-content">{{service.list[service.index]}}</view>
+</view>
+
+<block wx:if="{{!fill}}">
+  <view class="input-cell">
+    <textarea placeholder="有什么话对快递小哥说？" value="{{message}}"
+              data-name="message" bindblur="getInput" bindinput="getInput"></textarea>
+  </view>
+</block>
+
+<view class="fixed-footer">
+  <view class="footer-price">
+    <view class="price">
+      <text class="price-name">运费估算</text>
+      <text class="price-red">：￥123.00</text>
+    </view>
+    <view class="price-terms">
+      我已阅读并同意服务条款
+      <!--<checkbox>我已阅读并同意遵守《服务条款》</checkbox>-->
+    </view>
+  </view>
+  <view class="footer-btn">下单</view>
+</view>
+
+<block wx:if="{{fill}}">
+  <!--<view class="fill" bindtap="fill"></view>-->
+  <view class="fill"></view>
+</block>
+
+<view class="modal {{homeTime?'':'hide'}}">
+
+  <view class="select">
+
+    <view class="date">
+      <view class="{{timeIndex===0?'date-selected':''}}" data-index="{{0}}" bindtap="switchTime">
+        <view>今天</view>
+        <view>{{currentTime[0]}}</view>
+      </view>
+      <view class="{{timeIndex===1?'date-selected':''}}" data-index="{{1}}" bindtap="switchTime">
+        <view>明天</view>
+        <view>{{currentTime[1]}}</view>
+      </view>
+      <view class="{{timeIndex===2?'date-selected':''}}" data-index="{{2}}" bindtap="switchTime">
+        <view>后天</view>
+        <view>{{currentTime[2]}}</view>
+      </view>
+    </view>
+
+    <scroll-view class="time" scroll-y>
+      <block wx:for="{{time}}" wx:key="{{index}}">
+        <view class="{{timeSelect===index?'selected':''}}" data-index="{{index}}" data-time="{{item}}"
+              bindtap="timeSelect">
+          {{item}}
+        </view>
+      </block>
+    </scroll-view>
+
+  </view>
+
+  <!--<view class="btn">确定</view>-->
+</view>
+
+<view class="goods {{goods?'':'hide'}}">
+
+  <view class="title">
+    <view></view>
+    <view>货物名称</view>
+  </view>
+  <view class="goods-name" bindtap="switchGoods">
+    <view class="{{goodsIndex===1?'selected':''}}" data-index="{{1}}" data-name="日用品">日用品</view>
+    <view class="{{goodsIndex===2?'selected':''}}" data-index="{{2}}" data-name="文件">文件</view>
+    <view class="{{goodsIndex===3?'selected':''}}" data-index="{{3}}" data-name="数码产品">数码产品</view>
+    <view class="{{goodsIndex===4?'selected':''}}" data-index="{{4}}" data-name="服装">服装</view>
+    <view class="{{goodsIndex===5?'selected':''}}" data-index="{{5}}" data-name="食品">食品</view>
+    <view class="{{goodsIndex===6?'selected':''}}" data-index="{{6}}" data-name="其他">其他</view>
+  </view>
+
+  <view class="title">
+    <view></view>
+    <view>件数重量</view>
+  </view>
+  <view class="number">
+
+    <view>
+      <view class="name">件数：</view>
+      <view class="val-number">
+        <view class="operation" bindtap="numLess">-</view>
+        <input type="number" placeholder="" value="{{number}}" data-name="number" bindblur="getInput"
+               bindinput="getInput"/>
+        <view class="operation" bindtap="numAdd">+</view>
+      </view>
+      <view class="name">(件)</view>
+    </view>
+
+    <view>
+      <view class="name">重量：</view>
+      <view class="val-number">
+        <view class="operation" bindtap="wLess">-</view>
+        <input type="number" placeholder="" value="{{weight}}" data-name="weight" bindblur="getInput"
+               bindinput="getInput"/>
+        <view class="operation" bindtap="wAdd">+</view>
+      </view>
+      <view class="name">(KG)</view>
+    </view>
+
+  </view>
+
+  <view class="btn" bindtap="define">确定</view>
+</view>

@@ -1,0 +1,357 @@
+@import "../../common";
+
+.title {
+  display: flex;
+  align-items: center;
+  padding: rpx(20);
+  .icon {
+    color: $blue;
+  }
+  .title-name {
+    font-size: rpx(28)
+  }
+}
+
+.send-cell {
+  display: flex;
+  align-items: center;
+  padding: rpx(30);
+  .cell-name {
+    flex: none;
+    width: rpx(62);
+    height: rpx(62);
+    line-height: rpx(62);
+    text-align: center;
+    border-radius: 50%;
+    font-size: rpx(40);
+  }
+  .cell-info {
+    flex: 1;
+    margin-left: rpx(20);
+    border-right: 1px solid #ddd;
+    font-size: rpx(26);
+    color: #999;
+    .info {
+      font-size: rpx(28)
+    }
+    .info-desc {
+      font-size: rpx(28);
+      color: #999;
+    }
+  }
+  .cell-address {
+    flex: none;
+    padding-left: rpx(42);
+    font-size: rpx(26);
+  }
+}
+
+.send-cell {
+  .sender {
+    color: #ffffff;
+    background-color: #000;
+  }
+  .consignee {
+    color: #ffffff;
+    background-color: $blue;
+  }
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: rpx(30) rpx(60) rpx(30) rpx(30);
+  color: #666666;
+  @include border();
+  @include arrow();
+  .cell-name {
+    font-size: rpx(26);
+  }
+  .cell-content {
+    color: #999;
+    font-size: rpx(26);
+  }
+}
+
+.type-cell {
+  display: flex;
+  color: #666;
+  font-size: rpx(26);
+  > view {
+    flex: 1;
+    padding: rpx(20) rpx(30);
+  }
+  .cargoInfo {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      box-sizing: border-box;
+      border-right: 1px solid #ddd;
+      transform: scale(.5);
+      transform-origin: 0 0;
+      pointer-events: none;
+    }
+  }
+  .service {
+
+  }
+}
+
+.input-cell {
+  padding: rpx(30) rpx(60) rpx(30) rpx(30);
+  textarea {
+    width: 100%;
+    height: rpx(150);
+  }
+}
+
+.fixed-footer {
+  display: flex;
+  width: rpx(600);
+  height: rpx(70);
+  padding: rpx(15);
+  margin: 0 auto rpx(30);
+  background-color: #4599f2;
+  border-radius: rpx(70);
+  view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+  }
+  .footer-price {
+    flex: 1;
+    flex-direction: column;
+    border-right: 1px solid #eee;
+    .price {
+      font-size: rpx(26);
+    }
+    .price-terms {
+      font-size: rpx(20);
+      color: red;
+    }
+  }
+  .footer-btn {
+    font-size: rpx(28);
+    flex: 1;
+  }
+}
+
+//.fixed-footer {
+//  position: fixed;
+//  left: 0;
+//  bottom: 0;
+//  width: 100%;
+//  height: rpx(100);
+//  padding-left: rpx(30);
+//  box-sizing: border-box;
+//  display: flex;
+//  border-top: 1px solid #ddd;
+//  .footer-price {
+//    flex: 1;
+//    display: flex;
+//    justify-content: center;
+//    flex-direction: column;
+//    .price {
+//      .price-name {
+//        color: #666;
+//        font-size: rpx(24);
+//      }
+//      .price-red {
+//        color: red;
+//      }
+//    }
+//    .price-terms {
+//      color: #999;
+//      font-size: rpx(24);
+//    }
+//  }
+//  .footer-btn {
+//    flex: none;
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    width: rpx(180);
+//    color: #fff;
+//    background-color: $blue;
+//  }
+//}
+
+.fill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: rpx(400);
+  transition: all .25s;
+  background-color: #fff;
+}
+
+.modal {
+  .select {
+    height: rpx(400);
+    display: flex;
+    .date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      width: rpx(200);
+      background-color: #eeeeee;
+      > view {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        > view:first-child {
+          font-size: rpx(30);
+          color: #53a3ff;
+        }
+        > view:last-child {
+          font-size: rpx(26);
+          color: #c7c7c7;
+        }
+      }
+    }
+    .date-selected {
+      height: 100%;
+      width: 100%;
+      background-color: #fff;
+    }
+    .time {
+      flex: 1;
+      padding-top: rpx(15);
+      text-align: center;
+      color: #666;
+      view {
+        padding: rpx(20) 0;
+      }
+      .selected {
+        color: #53a3ff;
+      }
+    }
+  }
+}
+
+.hide {
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rpx(350);
+  height: rpx(80);
+  margin: rpx(30) auto;
+  border-radius: rpx(80);
+  color: #ffffff;
+  background-color: #4599f2;
+}
+
+.goods {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: rpx(510);
+  transition: all .25s;
+  background-color: #fff;
+}
+
+.goods {
+  .title {
+    display: flex;
+    align-items: center;
+    view:first-child {
+      width: rpx(8);
+      height: rpx(30);
+      border-radius: rpx(8);
+      margin-right: rpx(15);
+      background-color: #53a3ff;
+    }
+  }
+  .goods-name {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0 rpx(50);
+    color: #999999;
+    view {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rpx(180);
+      height: rpx(50);
+      line-height: rpx(50);
+      margin: rpx(15) 0;
+      border-radius: rpx(30);
+      border: 1px solid #ccc;
+    }
+    .selected {
+      border: 1px solid #53a3ff;
+      color: #fff;
+      background-color: #53a3ff;
+    }
+  }
+  .number {
+    display: flex;
+    justify-content: space-around;
+    > view {
+      display: flex;
+      align-items: center;
+    }
+    .name {
+      flex: none;
+      font-size: rpx(26);
+      color: #999999;
+    }
+  }
+}
+
+.val-number {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: rpx(60);
+
+  border-radius: rpx(10);
+  border: solid 1px #ccc;
+  .operation {
+    width: rpx(60);
+    height: 100%;
+    line-height: rpx(55);
+    text-align: center;
+    color: #999;
+    &:first-child {
+      line-height: rpx(50);
+      border-right: 1px solid #ccc;
+    }
+    &:last-child {
+      border-left: 1px solid #ccc;
+    }
+  }
+  input {
+    width: rpx(80);
+    height: rpx(4) !important;
+    text-align: center;
+  }
+}

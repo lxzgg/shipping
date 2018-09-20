@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+@import "common";
+
+page {
+  color: #333;
+  font-size: rpx(30);
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+}
+
+@import "icon";
+
+.border {
+  @include border();
+}
+
+.arrow {
+  @include arrow();
+}
+
+// 重置 checkbox
+checkbox .wx-checkbox-input {
+  width: rpx(28);
+  height: rpx(28);
+}
+
+// 选中后的 背景样式
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border: 1px solid $blue;
+  background-color: $blue;
+}
+
+// 选中后的 对勾样式
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  color: #fff;
+}
+
+/*radio默认样式重置*/
+radio .wx-radio-input {
+  width: rpx(30);
+  height: rpx(30);
+}
+
+radio .wx-radio-input .wx-radio-input-checked {
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+}
+
+/*radio默认样式重置*/

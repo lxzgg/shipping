@@ -1,0 +1,93 @@
+@charset "UTF-8";
+
+@function rpx($rpx:0) {
+  @return $rpx*1rpx;
+}
+
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+//排除最后一个
+$not-last: ':not(:last-child)';
+
+// 省略号
+@mixin ell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 箭头
+@mixin arrow($right:15) {
+  // $right距离右边距离
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - #{rpx(8)});
+    right: rpx(4+$right);
+    display: inline-block;
+    width: rpx(16);
+    height: rpx(16);
+    border-width: rpx(4) rpx(4) 0 0;
+    border-style: solid;
+    border-color: #C0C0C0;
+    transform: rotateZ(45deg);
+  }
+}
+
+// 底边框
+@mixin border($last:'') {
+  position: relative;
+  &#{$last}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    transform: scale(.5);
+    transform-origin: 0 0;
+    pointer-events: none;
+  }
+}
+
+// 图片高度自适应
+@mixin img($height:400,$rootWidth:750) {
+  position: relative;
+  padding-top: percentage($height / $rootWidth);
+  img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// 图片高度固定
+@mixin bg-img($height:400,$url:'https://picsum.photos/1000/400') {
+  height: #{$height}px;
+  background: url($url) center center;
+  background-size: cover;
+}

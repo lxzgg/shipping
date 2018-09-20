@@ -1,0 +1,65 @@
+@import "../../common";
+
+.addressList {
+  padding: rpx(30) rpx(15);
+
+  .title {
+    display: flex;
+    align-items: center;
+    view:first-child {
+      width: rpx(8);
+      height: rpx(30);
+      border-radius: rpx(8);
+      margin-right: rpx(15);
+      background-color: #53a3ff;
+    }
+  }
+
+  .list {
+
+    .item {
+      margin: rpx(15) 0;
+      box-shadow: 0 0 rpx(15) 0 rgba(150, 150, 150, 0.35);
+      border-radius: rpx(15);
+      > view {
+        &:first-child {
+          padding: rpx(30);
+          > view:last-child {
+            margin-top: rpx(15);
+            font-size: rpx(26);
+            color: #999999;
+          }
+        }
+        &:last-child {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: rpx(15) rpx(30);
+          border-top: 1px solid #eee;
+          color: #666;
+        }
+      }
+      .icon {
+        margin-right: rpx(15);
+      }
+      .icon-select {
+        color: red;
+      }
+    }
+
+  }
+}
+
+.add {
+  position: fixed;
+  right: rpx(50);
+  bottom: rpx(50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rpx(80);
+  height: rpx(80);
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: $blue;
+}

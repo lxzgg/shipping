@@ -1,0 +1,29 @@
+.controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150rpx;
+  display: flex;
+  align-items: center;
+}
+.controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+  font-size: 30rpx;
+}
+.controls button cover-view {
+  width: 100%;
+}
+.controls button:first-child {
+  color: red;
+  background-color: #ffffff;
+}
+.controls button:last-child {
+  color: #ffffff;
+  background-color: red;
+}

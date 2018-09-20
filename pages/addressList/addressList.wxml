@@ -1,0 +1,31 @@
+<view class="addressList">
+
+  <view class="title">
+    <view></view>
+    <view>地址簿</view>
+  </view>
+
+  <view class="list">
+
+    <block wx:for="{{list}}" wx:if="{{item.ID}}" wx:key="{{item.ID}}">
+      <view class="item">
+        <view>
+          <view>{{item.NAME}} {{item.MOBILE}}</view>
+          <view>{{item.PROVINCE + item.CITY + item.AREA + item.ADDRESS_DETAIL}}</view>
+        </view>
+        <view>
+          <view data-item="{{item}}" bindtap="default">
+            <text class="icon {{item.ISDEFAULT==='是'?'icon-select':'icon-no-select'}}"></text>
+            默认收货地址
+          </view>
+          <view data-item="{{item}}" bindtap="edit">编辑</view>
+          <view data-id="{{item.ID}}" bindtap="del">删除</view>
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+</view>
+
+<navigator url="/pages/send/send?type={{type}}" class="add icon icon-add"></navigator>
