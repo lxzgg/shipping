@@ -1,8 +1,8 @@
 <!--<view>近一个月</view>-->
 
 <view class="tab" bindtap="switch">
-  <view class="{{tabIndex===1?'select':''}}" data-index="{{1}}">已签收({{tabIndex===1?number:0}})</view>
-  <view class="{{tabIndex===0?'select':''}}" data-index="{{0}}">未签收({{tabIndex===0?number:0}})</view>
+  <view class="{{tabIndex===1?'select':''}}" data-index="{{1}}">已签收({{num1?num1:0}})</view>
+  <view class="{{tabIndex===0?'select':''}}" data-index="{{0}}">未签收({{num0?num0:0}})</view>
 </view>
 
 <view class="scan_code">

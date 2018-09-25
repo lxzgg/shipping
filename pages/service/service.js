@@ -27,11 +27,14 @@ Page({
       in_waybillno: '',
       in_signStatus: this.data.status,
     }).then(res => {
-
       this.setData({
         list: res.tables['0'].rows[0].ID ? res.tables['0'].rows : [],
-        number: res.tables['0'].rows[0].ID ? res.tables['0'].rows.length : 0,
       })
+      if (this.data.tabIndex === 1) {
+        this.setData({num1: res.tables['0'].rows[0].ID ? res.tables['0'].rows.length : 0})
+      } else {
+        this.setData({num0: res.tables['0'].rows[0].ID ? res.tables['0'].rows.length : 0})
+      }
     })
   },
 
