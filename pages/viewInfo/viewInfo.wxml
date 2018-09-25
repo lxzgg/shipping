@@ -1,16 +1,22 @@
 <view class="process-y">
 
-  <block wx:for="{{5}}">
+  <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{item.CHECKTIME}}">
 
     <view class="process-item">
       <view class="item-date">
-        <view>2018-06-01</view>
-        <view>15:30</view>
+        <view>{{item.CHECKTIME}}</view>
       </view>
       <view class="item-icon"></view>
-      <view class="item-content">系统正在处理,请稍后,</view>
+      <view class="item-content">{{item.LEFTCONTENT}} {{item.CONTENT}} {{item.RIGHTCONTENT}}</view>
     </view>
 
   </block>
 
 </view>
+
+<block wx:if="{{!list[0].CHECKTIME}}">
+  <view class="null">
+    <image class="null-img" mode="widthFix" src="/image/null.png"></image>
+    <view class="null-desc">还没有物流信息哦~</view>
+  </view>
+</block>

@@ -1,0 +1,30 @@
+<view class="desc">客户编码由联运通市场专员提供</view>
+
+<block wx:if="{{!code}}">
+  <view class="box">
+    <view class="input border">
+      <view class="prompt">客户编码</view>
+      <input  class="value" type="number" placeholder="请输入客户编码" data-name="number" bindblur="getInput" bindinput="getInput"/>
+    </view>
+
+    <view class="input">
+      <view class="prompt">客户名称</view>
+      <input  class="value" placeholder="请输入客户名称" data-name="name" bindblur="getInput" bindinput="getInput"/>
+    </view>
+  </view>
+
+  <view class="btn" bindtap="btn">确定</view>
+</block>
+
+<block wx:else>
+  <view class="box">
+    <view class="input border">
+      <view class="prompt">客户编码</view>
+      <view class="value">{{code}}</view>
+    </view>
+  </view>
+
+  <view class="btn" bindtap="unbind">取消绑定</view>
+</block>
+
+

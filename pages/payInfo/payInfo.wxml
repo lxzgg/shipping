@@ -1,35 +1,35 @@
 <view class="list">
 
-  <block wx:for="{{5}}">
+  <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{item.ID}}">
     <view class="item">
 
       <view class="number">
-        <view>单号:123456789</view>
+        <view>单号:{{item.ITEM_BILLID}}</view>
         <!--<view>2018-8-20 14:57签收</view>-->
       </view>
 
       <view class="info">
 
         <view>
-          <view class="address">深圳</view>
-          <view class="person">寄件人</view>
+          <view class="address">{{item.ITEM_STARTCITY}}</view>
+          <view class="person">{{item.ITEM_SHIPPER}}</view>
         </view>
 
         <view class="info-arrow">
-          <view>已签收</view>
+          <view>{{item.ITEM_YSSTATE}}</view>
           <image class="arrow-bg" src="/image/arrow.png"></image>
           <view class="price">
-            <text>总价:45</text>
-            <text>应付:20.5</text>
+            <text>总价:{{item.ITEM_RECEIVABLEMONEY}}</text>
+            <text>应付:{{item.PAYAMOUNT}}</text>
           </view>
         </view>
 
         <view>
-          <view class="address">北京</view>
-          <view class="person">收件人</view>
+          <view class="address">{{item.ITEM_TGTCITY}}</view>
+          <view class="person">{{item.ITEM_CONSIGNEE}}</view>
         </view>
 
-        <view class="view">未支付</view>
+        <view class="view">{{item.ITEM_YSSTATE}}</view>
 
       </view>
 
@@ -37,3 +37,10 @@
   </block>
 
 </view>
+
+<block wx:if="{{!list[0].ID}}">
+  <view class="null">
+    <image class="null-img" mode="widthFix" src="/image/null.png"></image>
+    <view class="null-desc">还没有订单信息哦~</view>
+  </view>
+</block>

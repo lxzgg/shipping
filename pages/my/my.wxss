@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 400rpx;
+}
+.header .bg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.header .user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header .user-info .info-img {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 20rpx;
+  border-radius: 50%;
+}
+.header .user-info .info-name {
+  color: #FFFFFF;
+}
+
+.list .item {
+  padding: 30rpx;
+}

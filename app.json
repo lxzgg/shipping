@@ -9,7 +9,11 @@
     "pages/viewInfo/viewInfo",
     "pages/payInfo/payInfo",
     "pages/address/address",
-    "pages/other-service/other-service"
+    "pages/other-service/other-service",
+    "pages/my/my",
+    "pages/code/code",
+    "pages/pay/pay",
+    "pages/myService/myService"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -28,14 +32,14 @@
         "selectedIconPath": "/image/a.png"
       },
       {
-        "pagePath": "pages/service/service",
+        "pagePath": "pages/myService/myService",
         "text": "自助服务",
         "iconPath": "/image/b1.png",
         "selectedIconPath": "/image/b.png"
       },
       {
-        "pagePath": "pages/payInfo/payInfo",
-        "text": "支付记录",
+        "pagePath": "pages/my/my",
+        "text": "我的LYT",
         "iconPath": "/image/c1.png",
         "selectedIconPath": "/image/c.png"
       }

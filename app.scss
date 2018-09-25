@@ -48,3 +48,18 @@ radio .wx-radio-input.wx-radio-input-checked::before {
 }
 
 /*radio默认样式重置*/
+
+.null {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: rpx(300);
+  .null-img {
+    width: rpx(400);
+  }
+  .null-desc {
+    margin-top: rpx(30);
+    font-size: rpx(30);
+    color: #999999;
+  }
+}

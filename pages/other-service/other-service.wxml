@@ -1,7 +1,7 @@
 <view class="service">
   <view>保价服务</view>
   <view class="value">
-    <input placeholder="请填写货物实际价值"/>元
+    <input placeholder="请填写货物实际价值" value="{{in_declareinsure}}" type="number" data-name="in_declareinsure" bindblur="getInput" bindinput="getInput"/>元
   </view>
 </view>
 
@@ -9,8 +9,8 @@
   <view>物控服务</view>
   <view class="value">
     <radio-group bindchange="material_control">
-      <radio value="是" color="#007bff" checked>是</radio>
-      <radio value="否" color="#007bff">否</radio>
+      <radio value="是" color="#007bff" checked="{{in_iswaitcontrol==='是'}}">是</radio>
+      <radio value="否" color="#007bff" checked="{{in_iswaitcontrol==='否'}}">否</radio>
     </radio-group>
   </view>
 </view>
@@ -19,10 +19,10 @@
   <view>签收单服务</view>
   <view class="value">
     <radio-group bindchange="signing">
-      <radio value="无需返单" color="#007bff" checked>无需返单</radio>
-      <radio value="需返单" color="#007bff">需返单</radio>
+      <radio value="无需返单" color="#007bff" checked="{{in_rtnbilltype==='无需返单'}}">无需返单</radio>
+      <radio value="需返单" color="#007bff" checked="{{in_rtnbilltype==='需返单'}}">需返单</radio>
     </radio-group>
   </view>
 </view>
 
-<view class="btn">保存</view>
+<view class="btn" bindtap="save">保存</view>

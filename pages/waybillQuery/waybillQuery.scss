@@ -28,6 +28,7 @@
 }
 
 .process-y {
+  margin: rpx(20);
   position: relative;
   &:before {
     content: '';
@@ -47,6 +48,7 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+      text-align: center;
       width: rpx(200);
       color: #666;
       font-size: rpx(28);

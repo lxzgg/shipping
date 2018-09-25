@@ -44,7 +44,7 @@
 <view class="cell" bindtap="homeTime">
   <view class="cell-name">上门时间</view>
   <view class="cell-content">
-    {{HomeTime?HomeTime:"今天内一小时"}}
+    {{HomeTime?HomeTime:"一小时以内"}}
   </view>
 </view>
 
@@ -59,13 +59,13 @@
       </view>
     </block>
   </view>
-  <view class="service arrow">
+  <view class="service arrow" bindtap="value_added">
     <view>增值服务(选填)</view>
-    <block wx:if="{{serviceShow}}">
+    <block wx:if="{{in_iswaitcontrol}}">
       <view>
-        <view>保价:4000元</view>
-        <view>物控</view>
-        <view>原件回单</view>
+        <view>保价:{{in_declareinsure}}元</view>
+        <view>物控:{{in_iswaitcontrol}}</view>
+        <view>{{in_rtnbilltype}}</view>
       </view>
     </block>
   </view>
@@ -92,17 +92,17 @@
 </block>
 
 <view class="fixed-footer">
-  <view class="footer-price">
+  <view class="footer-price" bindtap="getCost">
     <view class="price">
       <text class="price-name">运费估算</text>
-      <text class="price-red">：￥123.00</text>
+      <text class="price-red">：￥{{price}}</text>
     </view>
     <view class="price-terms">
       我已阅读并同意服务条款
       <!--<checkbox>我已阅读并同意遵守《服务条款》</checkbox>-->
     </view>
   </view>
-  <view class="footer-btn">下单</view>
+  <view class="footer-btn" bindtap="order">下单</view>
 </view>
 
 <block wx:if="{{fill}}">
@@ -150,12 +150,9 @@
     <view>货物名称</view>
   </view>
   <view class="goods-name" bindtap="switchGoods">
-    <view class="{{goodsIndex===1?'selected':''}}" data-index="{{1}}" data-name="日用品">日用品</view>
-    <view class="{{goodsIndex===2?'selected':''}}" data-index="{{2}}" data-name="文件">文件</view>
-    <view class="{{goodsIndex===3?'selected':''}}" data-index="{{3}}" data-name="数码产品">数码产品</view>
-    <view class="{{goodsIndex===4?'selected':''}}" data-index="{{4}}" data-name="服装">服装</view>
-    <view class="{{goodsIndex===5?'selected':''}}" data-index="{{5}}" data-name="食品">食品</view>
-    <view class="{{goodsIndex===6?'selected':''}}" data-index="{{6}}" data-name="其他">其他</view>
+    <block wx:for="{{itemName}}" wx:key="{{index}}">
+      <view class="{{goodsIndex===index?'selected':''}}" data-index="{{index}}" data-name="{{item}}">{{item}}</view>
+    </block>
   </view>
 
   <view class="title">

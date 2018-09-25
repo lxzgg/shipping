@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -86,7 +86,25 @@
 				{
 					"id": -1,
 					"name": "增值服务",
-					"pathName": "pages/other-service/other-service"
+					"pathName": "pages/other-service/other-service",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "客户编码",
+					"pathName": "pages/code/code",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "支付",
+					"pathName": "pages/pay/pay"
 				}
 			]
 		}

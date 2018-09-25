@@ -1,0 +1,47 @@
+<view class="pay-info" bindtap="pay_info">支付记录</view>
+
+<view class="query">
+  <input class="search" type="number" placeholder="请输入要支付的运单号" data-name="number" bindinput="getInput"
+         bindblur="getInput"/>
+  <view class="btn" bindtap="btn">查询</view>
+</view>
+
+<block wx:if="{{list[7].value}}">
+
+  <view class="item">
+
+    <view class="number">
+      <view>单号:{{list[1].value}}</view>
+      <!--<view>2018-8-20 14:57</view>-->
+    </view>
+
+
+    <view class="info">
+
+      <view>
+        <view class="address">{{list[2].value}}</view>
+        <view class="person">{{list[3].value}}</view>
+      </view>
+
+      <view class="info-arrow">
+        <view>{{list[4].value}}</view>
+        <image class="arrow-bg" src="/image/arrow.png"></image>
+        <view class="price">
+          <text>总价:{{list[7].value}}</text>
+          <text>应付:{{list[8].value}}</text>
+        </view>
+      </view>
+
+      <view>
+        <view class="address">{{list[5].value}}</view>
+        <view class="person">{{list[6].value}}</view>
+      </view>
+
+    </view>
+
+
+  </view>
+
+  <view class="btn1" bindtap="pay">立即支付</view>
+
+</block>

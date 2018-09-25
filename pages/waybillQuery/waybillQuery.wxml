@@ -1,19 +1,18 @@
 <view class="query">
-  <input class="search" placeholder="请输入运单号"/>
-  <view class="btn">查询</view>
+  <input class="search" type="number" placeholder="请输入运单号" data-name="number" bindinput="getInput" bindblur="getInput"/>
+  <view class="btn" bindtap="btn">查询</view>
 </view>
 
 <view class="process-y">
 
-  <block wx:for="{{5}}">
+  <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{item.CHECKTIME}}">
 
     <view class="process-item">
       <view class="item-date">
-        <view>2018-06-01</view>
-        <view>15:30</view>
+        <view>{{item.CHECKTIME}}</view>
       </view>
       <view class="item-icon"></view>
-      <view class="item-content">系统正在处理,请稍后,</view>
+      <view class="item-content">{{item.LEFTCONTENT}} {{item.CONTENT}} {{item.RIGHTCONTENT}}</view>
     </view>
 
   </block>

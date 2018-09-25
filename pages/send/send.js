@@ -8,7 +8,9 @@ Page({
 
   onLoad(e) {
     this.data.id = e.id
-    app.data.address = []
+    if (!e.id) {
+      app.data.address = []
+    }
   },
 
   onShow() {
@@ -51,7 +53,8 @@ Page({
       app.data.take = {NAME: name, MOBILE: phone, ADDRESS_DETAIL: details, PROVINCE: province, CITY: city, AREA: area}
     }
 
-    let isDefault = '是'
+
+    let isDefault = this.data.isDefault ? '是' : '否'
 
     // id有值则为修改
     if (this.data.id) {
@@ -141,7 +144,6 @@ Page({
     wx.chooseLocation({
       success: res => {
         const address = resolve(res.address)
-
         this.setData({address: address, details: address[3]})
       },
     })
@@ -151,6 +153,7 @@ Page({
     app.data.address = this.data.address
     wx.navigateTo({url: `/pages/address/address`})
   },
+
 })
 
 function resolve(address) {

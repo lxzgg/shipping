@@ -2,7 +2,7 @@
   <view class="info">
     <input class="name" placeholder="姓名" value="{{name}}" data-name="name"
            bindblur="getInput" bindinput="getInput"/>
-    <input class="phone" placeholder="手机号或0开头固话-分机号" value="{{phone}}"
+    <input class="phone" type="number" placeholder="手机号或0开头固话-分机号" value="{{phone}}"
            data-name="phone" bindblur="getInput" bindinput="getInput"/>
   </view>
   <view class="linkage" bindtap="selectAddress">
@@ -18,11 +18,11 @@
   </view>
 </view>
 
-<!--<view class="default-address">-->
-<!--<radio color="#007bff" checked="{{isDefault}}" bindtap="radioChange">-->
-<!--设为默认地址-->
-<!--</radio>-->
-<!--</view>-->
+<view class="default-address">
+  <radio color="#007bff" checked="{{isDefault}}" bindtap="radioChange">
+    设为默认地址
+  </radio>
+</view>
 
 <view class="smart-address">
   <view class="title">

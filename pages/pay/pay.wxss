@@ -1,0 +1,104 @@
+.query {
+  display: flex;
+  align-items: center;
+  margin: 20rpx;
+}
+.query .search {
+  flex: 1;
+  margin: 15rpx;
+  padding: 10rpx 20rpx;
+  box-shadow: 0 0 15rpx 0 rgba(153, 153, 153, 0.3);
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+.query .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120rpx;
+  height: 80rpx;
+  color: #ffffff;
+  border-radius: 10rpx;
+  background-color: #007bff;
+}
+
+.item {
+  margin: 50rpx 30rpx 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 0 15rpx 0 rgba(150, 150, 150, 0.35);
+  border-radius: 10px;
+}
+.item .number {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: #999999;
+}
+.item .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+.item .info .person {
+  font-size: 24rpx;
+  color: #999999;
+}
+.item .info-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #999999;
+}
+.item .info-arrow .price text:first-child {
+  color: #999999;
+}
+.item .info-arrow .price text:last-child {
+  margin-left: 20rpx;
+  color: #ce2424;
+}
+
+.arrow-bg {
+  width: 200rpx;
+  height: 10rpx;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+}
+.input .prompt {
+  flex: none;
+  color: #999999;
+}
+.input .value {
+  flex: 1;
+  margin-left: 20rpx;
+  color: #666;
+}
+
+.btn1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50rpx auto 0;
+  width: 350rpx;
+  height: 85rpx;
+  background-image: linear-gradient(90deg, #327ff1 0%, #4599f2 100%);
+  box-shadow: 0 0 20rpx 0 rgba(11, 94, 199, 0.35);
+  border-radius: 85rpx;
+  color: #FFFFFF;
+}
+
+.pay-info {
+  padding: 20rpx;
+  text-align: right;
+  color: #999;
+  border-bottom: 1px solid #eee;
+}

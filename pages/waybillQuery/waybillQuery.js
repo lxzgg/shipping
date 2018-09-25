@@ -1,11 +1,19 @@
 const app = getApp()
 
 Page({
-  data: {},
+  data: {
+    list: [],
+  },
 
-  onLoad() {
-    app.api.getLogistics({openid: app.data.openid, No: '100346971'}).then(res => {
-      console.log(res)
+  btn() {
+    app.api.getLogistics({No: this.data.number, openid: app.data.openid}).then(res => {
+      this.setData({
+        list: res.tables['0'].rows,
+      })
     })
+  },
+
+  getInput(e) {
+    app.common.getInput(this, e)
   },
 })

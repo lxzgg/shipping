@@ -9,7 +9,7 @@
 
     <block wx:for="{{list}}" wx:if="{{item.ID}}" wx:key="{{item.ID}}">
       <view class="item">
-        <view>
+        <view data-item="{{item}}" bindtap="select">
           <view>{{item.NAME}} {{item.MOBILE}}</view>
           <view>{{item.PROVINCE + item.CITY + item.AREA + item.ADDRESS_DETAIL}}</view>
         </view>

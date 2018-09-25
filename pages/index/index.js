@@ -3,7 +3,9 @@ const app = getApp()
 Page({
 
   data: {
+    price: 0,
     goodsName: '日用品',
+    itemName: ['电子产品', '服装', '酒类', '鲜活易腐', '物料', '其他'],
     payWay: {
       index: 0,
       list: ['现付', '到付'],
@@ -19,6 +21,8 @@ Page({
     time: [],
     // 当前时间
     currentTime: [app.timestamp(), app.timestamp(Date.now() + 24 * 60 * 60 * 1000), app.timestamp(Date.now() + 2 * 24 * 60 * 60 * 1000)],
+    in_orderstarttime: app.timestamp(Date.now(), 'YYYY-MM-DD HH:mm:ss'),
+    in_orderendtime: app.timestamp(Date.now() + 60 * 60 * 1000, 'YYYY-MM-DD HH:mm:ss'),
     // 当前时间下标
     timeIndex: 0,
     // 件数
@@ -38,7 +42,7 @@ Page({
     }).then(res => {
       return new Promise(resolve => {
         wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session',
+          url: 'https://kd.xiaozhanxiang.com/kd/openapi/WXgetOpenidServlet',
           data: {
             appid: app.data.appid,
             secret: app.data.secret,
@@ -46,15 +50,21 @@ Page({
             grant_type: 'authorization_code',
           },
           success: (res) => {
-            app.data.openid = res.data.openid
+            const data = JSON.parse(res.data.out_msg)
+            app.data.openid = data.openid
             resolve(res)
           },
         })
       })
     }).then(res => {
       // app.api.getHotCity({openid: res.data.openid})
-      app.api.userlogin({openid: res.data.openid, appid: app.data.appid})
+      app.api.userlogin({openid: app.data.openid, appid: app.data.appid})
     })
+
+    // app.api.getSearchProduct({openid: app.data.openid, content: '湖北'}).then(res => {
+    //   console.log(res)
+    // })
+
   },
 
   // 初始化
@@ -64,6 +74,14 @@ Page({
     }
     if (app.data.take) {
       this.setData({take: app.data.take})
+    }
+
+    if (app.data.in_iswaitcontrol) {
+      this.setData({
+        in_declareinsure: app.data.in_declareinsure,
+        in_iswaitcontrol: app.data.in_iswaitcontrol,
+        in_rtnbilltype: app.data.in_rtnbilltype,
+      })
     }
   },
 
@@ -174,12 +192,18 @@ Page({
   // 寄件人信息
   send() {
     app.data.type = '寄'
+    // if (this.data.send) {
+    //   app.data.address = [this.data.send.PROVINCE, this.data.send.CITY, this.data.send.AREA, this.data.send.ADDRESS_DETAIL, this.data.send.NAME, this.data.send.MOBILE]
+    // }
     wx.navigateTo({url: '/pages/send/send'})
   },
 
   // 收件人信息
   take() {
     app.data.type = '收'
+    // if (this.data.take) {
+    //   app.data.address = [this.data.take.PROVINCE, this.data.take.CITY, this.data.take.AREA, this.data.take.ADDRESS_DETAIL, this.data.take.NAME, this.data.take.MOBILE]
+    // }
     wx.navigateTo({url: '/pages/send/send'})
   },
 
@@ -224,7 +248,7 @@ Page({
 
   switchGoods(e) {
     const {index, name} = e.target.dataset
-    if (index) {
+    if (index >= 0) {
       this.setData({
         goodsIndex: index,
         goodsName: name,
@@ -262,6 +286,118 @@ Page({
   define() {
     this.fill()
     this.setData({goodsShow: true})
+  },
+
+  value_added() {
+    wx.navigateTo({url: '/pages/other-service/other-service'})
+  },
+
+  // 运费估算
+  getCost() {
+    const send = this.data.send
+    const take = this.data.take
+    const in_orderstarttime = this.data.in_orderstarttime
+    const in_orderendtime = this.data.in_orderendtime
+    const in_goodsname = this.data.goodsName
+    const in_goodscount = this.data.number
+    const in_goodsweight = this.data.weight
+    const in_declareinsure = this.data.in_declareinsure
+    const in_iswaitcontrol = this.data.in_iswaitcontrol === '是' ? 1 : 0
+    const in_rtnbilltype = this.data.in_rtnbilltype
+    const in_paymentmethod = this.data.payWay.list[this.data.payWay.index]
+    // 产品ID
+    const in_productid = ''
+    const in_product = this.data.product.list[this.data.product.index]
+    // 服务类型ID
+    const in_delivertypeid = ''
+    const in_delivertypename = this.data.service.list[this.data.service.index]
+    // 储运事项
+    const in_careful = this.data.message
+    // 寄件人地址簿ID
+    const in_addrID = ''
+
+    if (!send || !take) {
+      return wx.showToast({title: '请完善信息', icon: 'none'})
+    }
+
+    app.api.getCost({
+      openid: app.data.openid,
+      send,
+      take,
+      in_orderstarttime,
+      in_orderendtime,
+      in_goodsname,
+      in_goodscount,
+      in_goodsweight,
+      in_declareinsure,
+      in_iswaitcontrol,
+      in_rtnbilltype,
+      in_paymentmethod,
+      in_productid,
+      in_product,
+      in_delivertypeid,
+      in_delivertypename,
+      in_careful,
+      in_addrID,
+    }).then(res => {
+      this.setData({
+        price: res.rpara['0'].value,
+      })
+
+    })
+  },
+
+  // 下单
+  order() {
+    const send = this.data.send
+    const take = this.data.take
+    const in_orderstarttime = this.data.in_orderstarttime
+    const in_orderendtime = this.data.in_orderendtime
+    const in_goodsname = this.data.goodsName
+    const in_goodscount = Number(this.data.number)
+    const in_goodsweight = Number(this.data.weight)
+    const in_declareinsure = Number(this.data.in_declareinsure)
+    const in_iswaitcontrol = this.data.in_iswaitcontrol === '是' ? 1 : 0
+    const in_rtnbilltype = this.data.in_rtnbilltype
+    const in_paymentmethod = this.data.payWay.list[this.data.payWay.index]
+    // 产品ID
+    const in_productid = undefined
+    const in_product = this.data.product.list[this.data.product.index]
+    // 服务类型ID
+    const in_delivertypeid = undefined
+    const in_delivertypename = this.data.service.list[this.data.service.index]
+    // 储运事项
+    const in_careful = this.data.message
+    // 寄件人地址簿ID
+    const in_addrID = undefined
+
+    if (!send || !take) {
+      return wx.showToast({title: '请完善信息', icon: 'none'})
+    }
+
+    app.api.order({
+      openid: app.data.openid,
+      send,
+      take,
+      in_orderstarttime,
+      in_orderendtime,
+      in_goodsname,
+      in_goodscount,
+      in_goodsweight,
+      in_declareinsure,
+      in_iswaitcontrol,
+      in_rtnbilltype,
+      in_paymentmethod,
+      in_productid,
+      in_product,
+      in_delivertypeid,
+      in_delivertypename,
+      in_careful,
+      in_addrID,
+    }).then(res => {
+      const result = res.rpara['0'].value
+      if (!result) wx.showToast({title: '下单成功!'})
+    })
   },
 })
 

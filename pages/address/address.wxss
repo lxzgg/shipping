@@ -81,7 +81,7 @@
   height: 90rpx;
   border-radius: 10rpx;
   color: #fff;
-  background-color: #dc3545;
+  background-color: #007bff;
 }
 
 .indicator {

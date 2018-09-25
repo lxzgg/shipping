@@ -1,0 +1,16 @@
+<view class="header">
+  <image class="bg" src="/image/my-bg.png"></image>
+  <!--<view></view>-->
+  <!--<view class="user-info">-->
+  <!--<image class="info-img" src="https://picsum.photos/200/200"></image>-->
+  <!--<view class="info-name">姓名</view>-->
+  <!--</view>-->
+</view>
+
+<view class="list">
+
+  <navigator class="item arrow border" url="/pages/addressList/addressList">
+    <view>地址簿</view>
+  </navigator>
+
+</view>

@@ -1,0 +1,57 @@
+@import "../../common";
+
+.desc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: rpx(50);
+
+  font-size: rpx(26);
+  color: #999999;
+}
+
+.box {
+  margin: rpx(100) auto 0;
+  width: 90%;
+  padding: 0 rpx(20);
+  border-radius: rpx(20);
+  border: 1px solid #ccc;
+  .input {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: rpx(20);
+
+    .prompt {
+      flex: none;
+      color: #999999;
+    }
+
+    .value {
+      flex: 1;
+      margin-left: rpx(20);
+      color: #666;
+    }
+
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: rpx(100) auto 0;
+
+  width: rpx(350);
+  height: rpx(85);
+  background-image: linear-gradient(90deg,
+    #327ff1 0%,
+    #4599f2 100%);
+  box-shadow: 0 0 rpx(20) 0 rgba(11, 94, 199, 0.35);
+  border-radius: rpx(85);
+  color: #FFFFFF;
+}

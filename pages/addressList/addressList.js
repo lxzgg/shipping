@@ -5,10 +5,7 @@ Page({
   data: {},
 
   onLoad() {
-    console.log(app.data.type)
-
-    wx.setNavigationBarTitle({title: `${app.data.type}件地址栏`})
-
+    wx.setNavigationBarTitle({title: `${app.data.type}件地址簿`})
   },
 
   onShow() {
@@ -70,6 +67,18 @@ Page({
       this.getAddress()
     })
 
+  },
+
+  // 选中
+  select(e) {
+    const {NAME, MOBILE, ADDRESS_DETAIL, PROVINCE, CITY, AREA} = e.currentTarget.dataset.item
+    console.log(app.data.type)
+    if (app.data.type === '寄') {
+      app.data.send = {NAME, MOBILE, ADDRESS_DETAIL, PROVINCE, CITY, AREA}
+    } else if (app.data.type === '收') {
+      app.data.take = {NAME, MOBILE, ADDRESS_DETAIL, PROVINCE, CITY, AREA}
+    }
+    wx.navigateBack()
   },
 
 })

@@ -1,0 +1,24 @@
+<view class="header">
+  <image class="bg" src="/image/my-bg.png"></image>
+  <!--<view></view>-->
+  <!--<view class="user-info">-->
+  <!--<image class="info-img" src="https://picsum.photos/200/200"></image>-->
+  <!--<view class="info-name">姓名</view>-->
+  <!--</view>-->
+</view>
+
+<view class="list">
+
+  <navigator class="item arrow border" url="/pages/service/service">
+    <view>货物查询</view>
+  </navigator>
+
+  <navigator class="item arrow border" url="/pages/pay/pay">
+    <view>自助服务</view>
+  </navigator>
+
+  <navigator class="item arrow border" url="/pages/code/code">
+    <view>客户编码</view>
+  </navigator>
+
+</view>

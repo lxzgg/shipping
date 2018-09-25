@@ -20,15 +20,6 @@
   }
 }
 
-.search {
-  margin: rpx(15) rpx(30);
-  padding: rpx(20);
-  box-shadow: 0 0 rpx(15) 0 rgba(#999, 0.3);
-  border-radius: rpx(30);
-  font-size: rpx(26);
-  color: #999999;
-}
-
 .list {
   .item {
     margin: rpx(20) rpx(30);
@@ -83,4 +74,24 @@
 .arrow-bg {
   width: rpx(200);
   height: rpx(10);
+}
+
+.scan_code {
+  display: flex;
+  align-items: center;
+  margin: rpx(15) rpx(30);
+  .search {
+    flex: 1;
+    margin-right: rpx(20);
+    padding: rpx(20);
+    box-shadow: 0 0 rpx(15) 0 rgba(#999, 0.3);
+    border-radius: rpx(30);
+    font-size: rpx(26);
+    color: #999999;
+  }
+  .icon {
+    flex: none;
+    color: #666;
+    font-size: rpx(55);
+  }
 }

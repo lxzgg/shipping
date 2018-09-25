@@ -1,29 +1,7 @@
 @import "../../common";
 
-.query {
-  display: flex;
-  align-items: center;
-  margin: rpx(20);
-  input {
-    flex: 1;
-    margin-right: rpx(20);
-    padding: rpx(5) rpx(15);
-    border-radius: rpx(10);
-    border: 1px solid #ccc;
-  }
-  .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: rpx(120);
-    height: rpx(80);
-    color: #ffffff;
-    border-radius: rpx(10);
-    background-color: #007bff;
-  }
-}
-
 .process-y {
+  margin: rpx(20);
   position: relative;
   &:before {
     content: '';
@@ -43,6 +21,7 @@
       display: flex;
       align-items: center;
       flex-direction: column;
+      text-align: center;
       width: rpx(200);
       color: #666;
       font-size: rpx(28);
@@ -62,3 +41,4 @@
     }
   }
 }
+

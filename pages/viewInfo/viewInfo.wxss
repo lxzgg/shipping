@@ -1,27 +1,5 @@
-.query {
-  display: flex;
-  align-items: center;
-  margin: 20rpx;
-}
-.query input {
-  flex: 1;
-  margin-right: 20rpx;
-  padding: 5rpx 15rpx;
-  border-radius: 10rpx;
-  border: 1px solid #ccc;
-}
-.query .btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120rpx;
-  height: 80rpx;
-  color: #ffffff;
-  border-radius: 10rpx;
-  background-color: #007bff;
-}
-
 .process-y {
+  margin: 20rpx;
   position: relative;
 }
 .process-y:before {
@@ -43,6 +21,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
   width: 200rpx;
   color: #666;
   font-size: 28rpx;
