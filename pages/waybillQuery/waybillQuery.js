@@ -16,4 +16,15 @@ Page({
   getInput(e) {
     app.common.getInput(this, e)
   },
+
+  // 扫码
+  scan_code() {
+    wx.scanCode({
+      success: res => {
+        this.data.number = res.result
+        this.btn()
+      },
+    })
+  },
+
 })

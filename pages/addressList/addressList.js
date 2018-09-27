@@ -6,6 +6,7 @@ Page({
 
   onLoad() {
     wx.setNavigationBarTitle({title: `${app.data.type}件地址簿`})
+    this.setData({type: app.data.type})
   },
 
   onShow() {

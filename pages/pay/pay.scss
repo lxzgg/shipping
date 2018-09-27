@@ -49,6 +49,7 @@
     .person {
       font-size: rpx(24);
       color: #999999;
+      text-align: center;
     }
   }
   .info-arrow {
@@ -120,4 +121,10 @@
   text-align: right;
   color: #999;
   border-bottom: 1px solid #eee;
+}
+
+.icon-scan_code {
+  margin: 0 rpx(15);
+  color: #666;
+  font-size: rpx(55);
 }

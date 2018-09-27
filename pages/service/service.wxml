@@ -1,4 +1,4 @@
-<!--<view>近一个月</view>-->
+<view class="pay-info" bindtap="pay_info" bindtap="time">{{time}}</view>
 
 <view class="tab" bindtap="switch">
   <view class="{{tabIndex===1?'select':''}}" data-index="{{1}}">已签收({{num1?num1:0}})</view>

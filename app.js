@@ -1,16 +1,19 @@
 import utils from './utils/index'
+import Map from './utils/bmap-wx.min'
 
 App({
   ...utils,
+
+  map: new Map({ak: 'UOv7wTII5qmKpz1U4HpZIFX6Z6kHXGoY'}),
 
   data: {
     type: '',
     send: '',
     take: '',
     address: [],
-    appid: 'wxac71cf64ebc2da5c',
-    secret: 'e2b9eca2cb5fc2f7322b8bc567501c48',
-    openid: 'oD9AD0Xi_HFneW4UgnekWDWT3LZ8',
+    appid: 'wx6fd1e3873d3ec044',
+    secret: '5754a5235c3a45f4cd20efa03ee8429e',
+    openid: '',
     image: '',
   },
 

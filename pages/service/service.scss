@@ -43,6 +43,7 @@
       .person {
         font-size: rpx(24);
         color: #999999;
+        text-align: center;
       }
     }
     .info-arrow {
@@ -89,9 +90,16 @@
     font-size: rpx(26);
     color: #999999;
   }
-  .icon {
+  .icon-scan_code {
     flex: none;
     color: #666;
     font-size: rpx(55);
   }
+}
+
+.pay-info {
+  padding: rpx(20);
+  text-align: right;
+  color: #999;
+  border-bottom: 1px solid #eee;
 }

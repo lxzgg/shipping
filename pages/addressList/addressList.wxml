@@ -16,7 +16,7 @@
         <view>
           <view data-item="{{item}}" bindtap="default">
             <text class="icon {{item.ISDEFAULT==='是'?'icon-select':'icon-no-select'}}"></text>
-            默认收货地址
+            默认{{type}}件地址
           </view>
           <view data-item="{{item}}" bindtap="edit">编辑</view>
           <view data-id="{{item.ID}}" bindtap="del">删除</view>

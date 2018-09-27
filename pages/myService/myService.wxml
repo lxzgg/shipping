@@ -14,7 +14,7 @@
   </navigator>
 
   <navigator class="item arrow border" url="/pages/pay/pay">
-    <view>自助服务</view>
+    <view>自助支付</view>
   </navigator>
 
   <navigator class="item arrow border" url="/pages/code/code">

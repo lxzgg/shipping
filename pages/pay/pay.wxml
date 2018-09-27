@@ -3,6 +3,7 @@
 <view class="query">
   <input class="search" type="number" placeholder="请输入要支付的运单号" data-name="number" bindinput="getInput"
          bindblur="getInput"/>
+  <view class="icon icon-scan_code" bindtap="scan_code"></view>
   <view class="btn" bindtap="btn">查询</view>
 </view>
 
@@ -14,7 +15,6 @@
       <view>单号:{{list[1].value}}</view>
       <!--<view>2018-8-20 14:57</view>-->
     </view>
-
 
     <view class="info">
 
@@ -39,9 +39,8 @@
 
     </view>
 
-
   </view>
 
-  <view class="btn1" bindtap="pay">立即支付</view>
+  <view class="btn1" bindtap="pay" wx:if="{{isPay}}">立即支付</view>
 
 </block>

@@ -5,7 +5,7 @@
     <input class="phone" type="number" placeholder="手机号或0开头固话-分机号" value="{{phone}}"
            data-name="phone" bindblur="getInput" bindinput="getInput"/>
   </view>
-  <view class="linkage" bindtap="selectAddress">
+  <view class="linkage" catchtap="selectAddress">
 
     <view class="picker">
       {{address[0]}} {{address[1]}} {{address[2]}}

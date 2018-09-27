@@ -1,5 +1,6 @@
 <view class="query">
   <input class="search" type="number" placeholder="请输入运单号" data-name="number" bindinput="getInput" bindblur="getInput"/>
+  <view class="icon icon-scan_code" bindtap="scan_code"></view>
   <view class="btn" bindtap="btn">查询</view>
 </view>
 

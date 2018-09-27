@@ -20,6 +20,7 @@
 .list .item .info .person {
   font-size: 24rpx;
   color: #999999;
+  text-align: center;
 }
 .list .item .info-arrow {
   display: flex;

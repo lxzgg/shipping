@@ -15,7 +15,7 @@ Page({
 
   onShow() {
     const address = app.data.address
-    console.log(address)
+
     if (address.length === 0) return
 
     let details = this.data.details || ''
@@ -141,17 +141,27 @@ Page({
   },
 
   nav() {
+    app.data.address = []
     wx.chooseLocation({
       success: res => {
-        const address = resolve(res.address)
-        this.setData({address: address, details: address[3]})
+        const details = res.name
+
+        app.map.regeocoding({
+          location: `${res.latitude},${res.longitude}`,
+          success: res => {
+
+            const address = resolve(res.originalData.result.formatted_address)
+            this.setData({address: address, details})
+          },
+        })
+
       },
     })
   },
 
   selectAddress() {
     app.data.address = this.data.address
-    wx.navigateTo({url: `/pages/address/address`})
+    wx.navigateTo({url: '/pages/address/address'})
   },
 
 })

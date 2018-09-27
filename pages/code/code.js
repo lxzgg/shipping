@@ -18,6 +18,7 @@ Page({
       out_name: '',
     }).then(res => {
       this.setData({
+        name: res.rpara[0].value,
         code: res.rpara[1].value,
       })
     })

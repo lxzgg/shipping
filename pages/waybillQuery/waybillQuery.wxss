@@ -64,3 +64,9 @@
   font-size: 28rpx;
   color: #999999;
 }
+
+.icon-scan_code {
+  margin: 0 15rpx;
+  color: #666;
+  font-size: 55rpx;
+}

@@ -4,7 +4,7 @@ Page({
 
   data: {
     price: 0,
-    goodsName: '日用品',
+    goodsName: '',
     itemName: ['电子产品', '服装', '酒类', '鲜活易腐', '物料', '其他'],
     payWay: {
       index: 0,
@@ -12,7 +12,7 @@ Page({
     },
     product: {
       index: 0,
-      list: ['当日达', '次日达', '隔日达', '特惠卡班'],
+      list: [],
     },
     service: {
       index: 0,
@@ -29,7 +29,7 @@ Page({
     number: 1,
     // 重量
     weight: 1,
-    goodsIndex: 1,
+    goodsIndex: 0,
   },
 
   onLoad() {
@@ -59,11 +59,39 @@ Page({
     }).then(res => {
       // app.api.getHotCity({openid: res.data.openid})
       app.api.userlogin({openid: app.data.openid, appid: app.data.appid})
-    })
+      app.api.getAddress({openid: app.data.openid, send: '寄'}).then(res => {
+        const defaultList = res.tables['0'].rows
+        for (let i = 0; i < defaultList.length; i++) {
+          if (defaultList[i].ISDEFAULT === '是') {
+            this.setData({send: defaultList[i]})
+            break
+          }
+        }
+      })
 
-    // app.api.getSearchProduct({openid: app.data.openid, content: '湖北'}).then(res => {
-    //   console.log(res)
-    // })
+      app.api.getAddress({openid: app.data.openid, send: '收'}).then(res => {
+        const defaultList = res.tables['0'].rows
+        for (let i = 0; i < defaultList.length; i++) {
+          if (defaultList[i].ISDEFAULT === '是') {
+            this.setData({take: defaultList[i]})
+            break
+          }
+        }
+      })
+
+      app.api.getProduct({openid: app.data.openid}).then(res => {
+        const list = res.tables['0'].rows
+        const arr = []
+        for (let i = 0; i < list.length; i++) {
+          arr.push(list[i].ITEM_PRODUCTNAME)
+        }
+        this.data.product.list = arr
+        this.setData({
+          product: this.data.product,
+        })
+      })
+
+    })
 
   },
 
@@ -247,6 +275,7 @@ Page({
   },
 
   switchGoods(e) {
+    console.log(e)
     const {index, name} = e.target.dataset
     if (index >= 0) {
       this.setData({
@@ -285,7 +314,7 @@ Page({
   // 确定
   define() {
     this.fill()
-    this.setData({goodsShow: true})
+    this.setData({goodsShow: true, goodsName: this.data.itemName[this.data.goodsIndex]})
   },
 
   value_added() {

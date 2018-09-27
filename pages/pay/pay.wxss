@@ -45,6 +45,7 @@
 .item .info .person {
   font-size: 24rpx;
   color: #999999;
+  text-align: center;
 }
 .item .info-arrow {
   display: flex;
@@ -101,4 +102,10 @@
   text-align: right;
   color: #999;
   border-bottom: 1px solid #eee;
+}
+
+.icon-scan_code {
+  margin: 0 15rpx;
+  color: #666;
+  font-size: 55rpx;
 }

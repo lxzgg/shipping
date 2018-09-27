@@ -28,8 +28,8 @@
   flex: 1;
 }
 .address .linkage .icon {
+  padding: 10rpx 30rpx;
   flex: none;
-  margin-left: 30rpx;
 }
 
 .default-address {

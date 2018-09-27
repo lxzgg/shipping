@@ -5,10 +5,27 @@ Page({
   data: {
     tabIndex: 1,
     status: '已签收',
+    time: '近一个月',
+    itemList: ['近一个月', '近半个月', '近7天', '近3天'],
+    itemTime: [30, 15, 7, 3],
+    currentTime: 30,
   },
 
   onLoad() {
     this.getOrderList()
+  },
+
+  // 时间
+  time() {
+    wx.showActionSheet({
+      itemList: this.data.itemList,
+      success: res => {
+        const time = this.data.itemList[res.tapIndex]
+        const currentTime = this.data.itemTime[res.tapIndex]
+        this.setData({time, currentTime})
+        this.getOrderList()
+      },
+    })
   },
 
   switch(e) {
@@ -23,7 +40,7 @@ Page({
   getOrderList() {
     app.api.orderlist({
       in_openid: app.data.openid,
-      in_checktime: 30,
+      in_checktime: this.data.currentTime,
       in_waybillno: '',
       in_signStatus: this.data.status,
     }).then(res => {

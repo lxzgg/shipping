@@ -22,6 +22,10 @@
       <view class="prompt">客户编码</view>
       <view class="value">{{code}}</view>
     </view>
+    <view class="input">
+      <view class="prompt">客户名称</view>
+      <view class="value">{{name}}</view>
+    </view>
   </view>
 
   <view class="btn" bindtap="unbind">取消绑定</view>
