@@ -17,6 +17,7 @@ Page({
   getAddress() {
     wx.showLoading({title: '请稍后~', mask: true})
     app.load.then(res => {
+      console.log('开始获取地址')
       app.api.getAddress({openid: app.data.openid, phone: this.data.phone, send: app.data.type}).then(res => {
 
         const result = res.rpara['0'].value
@@ -27,6 +28,7 @@ Page({
         const list = res.tables['0'].rows
         this.setData({list})
         wx.hideLoading()
+        console.log('地址获取完毕')
       })
     })
   },

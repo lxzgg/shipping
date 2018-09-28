@@ -36,7 +36,7 @@ Page({
     wx.showLoading({title: 'Loading...', mask: true})
 
     app.load.then(res => {
-      // app.api.getHotCity({openid: res.data.openid})
+
       app.api.userlogin({openid: app.data.openid, appid: app.data.appid}).then(res => {
         wx.hideLoading()
       })

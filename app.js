@@ -37,6 +37,7 @@ App({
             grant_type: 'authorization_code',
           },
           success: (res) => {
+            console.log('openid 已获取')
             const data = JSON.parse(res.data.out_msg)
             this.data.openid = data.openid
             resolve(res)
