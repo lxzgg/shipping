@@ -31,7 +31,7 @@
         </view>
 
         <view class="info-arrow">
-          <view>{{item.item_goodsstatus}}</view>
+          <view>{{item.ITEM_GOODSSTATUS}}</view>
           <image class="arrow-bg" src="/image/arrow.png"></image>
         </view>
 

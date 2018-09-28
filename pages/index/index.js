@@ -33,32 +33,15 @@ Page({
   },
 
   onLoad() {
-    new Promise(resolve => {
-      wx.login({
-        success: (res) => {
-          resolve(res)
-        },
-      })
-    }).then(res => {
-      return new Promise(resolve => {
-        wx.request({
-          url: 'https://kd.xiaozhanxiang.com/kd/openapi/WXgetOpenidServlet',
-          data: {
-            appid: app.data.appid,
-            secret: app.data.secret,
-            js_code: res.code,
-            grant_type: 'authorization_code',
-          },
-          success: (res) => {
-            const data = JSON.parse(res.data.out_msg)
-            app.data.openid = data.openid
-            resolve(res)
-          },
-        })
-      })
-    }).then(res => {
+    wx.showLoading({title: 'Loading...', mask: true})
+
+    app.load.then(res => {
       // app.api.getHotCity({openid: res.data.openid})
-      app.api.userlogin({openid: app.data.openid, appid: app.data.appid})
+      app.api.userlogin({openid: app.data.openid, appid: app.data.appid}).then(res => {
+        wx.hideLoading()
+      })
+
+
       app.api.getAddress({openid: app.data.openid, send: '寄'}).then(res => {
         const defaultList = res.tables['0'].rows
         for (let i = 0; i < defaultList.length; i++) {
@@ -160,11 +143,11 @@ Page({
 
     let day
     if (timeIndex === 0) {
-      day = app.timestamp('YYYY-MM-DD')
+      day = app.timestamp('YYYY/MM/DD')
     } else if (timeIndex === 1) {
-      day = app.timestamp(Date.now() + 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
+      day = app.timestamp(Date.now() + 24 * 60 * 60 * 1000, 'YYYY/MM/DD')
     } else if (timeIndex === 2) {
-      day = app.timestamp(Date.now() + 2 * 24 * 60 * 60 * 1000, 'YYYY-MM-DD')
+      day = app.timestamp(Date.now() + 2 * 24 * 60 * 60 * 1000, 'YYYY/MM/DD')
     }
 
     let HomeTime = `${day} ${e.currentTarget.dataset.time}`
@@ -179,8 +162,20 @@ Page({
       in_orderstarttime = app.timestamp(Date.now(), 'YYYY-MM-DD HH:mm:ss')
       in_orderendtime = app.timestamp(Date.now() + 60 * 60 * 1000, 'YYYY-MM-DD HH:mm:ss')
     } else {
-      in_orderstarttime = app.timestamp(`${day} ${time[0]}`, 'YYYY-MM-DD HH:mm:ss')
-      in_orderendtime = app.timestamp(`${day} ${time[1]}`, 'YYYY-MM-DD HH:mm:ss')
+      let startTime = `${day} ${time[0]}:00`
+      let endTime = `${day} ${time[1]}:00`
+
+      // 判断时间是不是24时,苹果不支持这玩意
+      if (Number(time[1].split(':')[0]) === 24) {
+        const dateArr = day.split('/')
+        endTime = `${dateArr[0]}/${dateArr[1]}/${Number(dateArr[2]) + 1} 00:00:00`
+      }
+
+      in_orderstarttime = app.timestamp(startTime, 'YYYY-MM-DD HH:mm:ss')
+      in_orderendtime = app.timestamp(endTime, 'YYYY-MM-DD HH:mm:ss')
+
+      console.log(in_orderstarttime)
+      console.log(in_orderendtime)
     }
 
     this.data.in_orderstarttime = in_orderstarttime
@@ -275,7 +270,6 @@ Page({
   },
 
   switchGoods(e) {
-    console.log(e)
     const {index, name} = e.target.dataset
     if (index >= 0) {
       this.setData({
@@ -314,7 +308,7 @@ Page({
   // 确定
   define() {
     this.fill()
-    this.setData({goodsShow: true, goodsName: this.data.itemName[this.data.goodsIndex]})
+    this.setData({goodsName: this.data.itemName[this.data.goodsIndex]})
   },
 
   value_added() {
@@ -378,6 +372,7 @@ Page({
 
   // 下单
   order() {
+    wx.showLoading({title: '请稍后~', mask: true})
     const send = this.data.send
     const take = this.data.take
     const in_orderstarttime = this.data.in_orderstarttime
@@ -400,8 +395,14 @@ Page({
     // 寄件人地址簿ID
     const in_addrID = undefined
 
-    if (!send || !take) {
-      return wx.showToast({title: '请完善信息', icon: 'none'})
+    if (!send) {
+      return wx.showToast({title: '请填写寄件地址', icon: 'none'})
+    }
+    if (!take) {
+      return wx.showToast({title: '请填写收件地址', icon: 'none'})
+    }
+    if (!in_goodsname) {
+      return wx.showToast({title: '请填写货物信息', icon: 'none'})
     }
 
     app.api.order({
@@ -425,8 +426,17 @@ Page({
       in_addrID,
     }).then(res => {
       const result = res.rpara['0'].value
-      if (!result) wx.showToast({title: '下单成功!'})
+      if (result) {
+        wx.showToast({title: result, icon: 'none'})
+      } else {
+        wx.showToast({title: '下单成功!'})
+        // 清空必填信息
+        this.setData({
+          take: '', goodsName: '', in_declareinsure: '', in_iswaitcontrol: '', in_rtnbilltype: '',
+        })
+      }
     })
+
   },
 })
 

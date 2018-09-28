@@ -51,7 +51,7 @@
 <view class="type-cell border">
   <view class="cargoInfo arrow" bindtap="goods">
     <view>货物信息(必填)</view>
-    <block wx:if="{{goodsShow}}">
+    <block wx:if="{{goodsName}}">
       <view>
         <view>{{goodsName}}</view>
         <view>{{number}}件</view>

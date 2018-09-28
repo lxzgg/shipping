@@ -4,12 +4,13 @@
   <view class="box">
     <view class="input border">
       <view class="prompt">客户编码</view>
-      <input  class="value" type="number" placeholder="请输入客户编码" data-name="number" bindblur="getInput" bindinput="getInput"/>
+      <input class="value" type="number" placeholder="请输入客户编码" data-name="number" bindblur="getInput"
+             bindinput="getInput"/>
     </view>
 
     <view class="input">
       <view class="prompt">客户名称</view>
-      <input  class="value" placeholder="请输入客户名称" data-name="name" bindblur="getInput" bindinput="getInput"/>
+      <input class="value" placeholder="请输入客户名称" data-name="name" bindblur="getInput" bindinput="getInput"/>
     </view>
   </view>
 

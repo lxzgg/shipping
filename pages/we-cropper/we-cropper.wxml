@@ -10,7 +10,7 @@
 
     <cover-view class="controls">
       <button class="upload" bindtap="uploadTap">重选照片</button>
-      <button class="getCropperImage" bindtap="getCropperImage">剪切</button>
+      <button class="getCropperImage" bindtap="getCropperImage">识别</button>
     </cover-view>
 
   </canvas>

@@ -1,7 +1,8 @@
 <view class="service">
   <view>保价服务</view>
   <view class="value">
-    <input placeholder="请填写货物实际价值" value="{{in_declareinsure}}" type="number" data-name="in_declareinsure" bindblur="getInput" bindinput="getInput"/>元
+    <input placeholder="请填写货物实际价值" value="{{in_declareinsure}}" type="number" data-name="in_declareinsure"
+           bindblur="getInput" bindinput="getInput"/>元
   </view>
 </view>
 

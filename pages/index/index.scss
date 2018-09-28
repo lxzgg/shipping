@@ -15,8 +15,8 @@
 .send-cell {
   display: flex;
   align-items: center;
-  padding: rpx(30);
   .cell-name {
+    margin-left: rpx(30);
     flex: none;
     width: rpx(62);
     height: rpx(62);
@@ -32,7 +32,8 @@
     font-size: rpx(26);
     color: #999;
     .info {
-      font-size: rpx(28)
+      font-size: rpx(28);
+      padding: rpx(40);
     }
     .info-desc {
       font-size: rpx(28);
@@ -41,7 +42,7 @@
   }
   .cell-address {
     flex: none;
-    padding-left: rpx(42);
+    padding: rpx(40);
     font-size: rpx(26);
   }
 }

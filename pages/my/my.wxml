@@ -9,8 +9,12 @@
 
 <view class="list">
 
-  <navigator class="item arrow border" url="/pages/addressList/addressList">
-    <view>地址簿</view>
-  </navigator>
+  <view class="item arrow border" bindtap="send">
+    <view>寄件地址簿</view>
+  </view>
+
+  <view class="item arrow border" bindtap="take">
+    <view>收件地址簿</view>
+  </view>
 
 </view>

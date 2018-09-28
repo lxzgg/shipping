@@ -17,4 +17,33 @@ App({
     image: '',
   },
 
+  load: Promise.resolve(),
+
+  onLaunch() {
+    this.load = new Promise(resolve => {
+      wx.login({
+        success: (res) => {
+          resolve(res)
+        },
+      })
+    }).then(res => {
+      return new Promise(resolve => {
+        wx.request({
+          url: 'https://www.szuem.com:8436/openapi/WXgetOpenidServlet',
+          data: {
+            appid: this.data.appid,
+            secret: this.data.secret,
+            js_code: res.code,
+            grant_type: 'authorization_code',
+          },
+          success: (res) => {
+            const data = JSON.parse(res.data.out_msg)
+            this.data.openid = data.openid
+            resolve(res)
+          },
+        })
+      })
+    })
+  },
+
 })

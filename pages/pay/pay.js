@@ -22,7 +22,7 @@ Page({
   },
 
   pay() {
-
+    wx.showLoading({title: '请稍后~', mask: true})
     if (!this.data.list[7].value && !this.data.list[1].value) return
 
     let param = {
@@ -37,7 +37,7 @@ Page({
       // 订单号
       out_trade_no: randomStringing(),
       // 标价金额
-      total_fee: 1,
+      total_fee: Number(this.data.list[8].value) * 100,
       // 终端IP
       spbill_create_ip: '123.12.12.123',
       // 通知地址
@@ -50,7 +50,7 @@ Page({
 
     const pay = new Promise(resolve => {
       wx.request({
-        url: 'https://kd.xiaozhanxiang.com/kd/openapi/WXgetPayResultServlet',
+        url: 'https://www.szuem.com:8436/openapi/WXgetPayResultServlet',
         data: param,
         success: res => {
           wx.requestPayment({
@@ -63,7 +63,7 @@ Page({
               resolve()
             },
             fail: res => {
-              console.log(res)
+              wx.hideLoading()
             },
           })
         },

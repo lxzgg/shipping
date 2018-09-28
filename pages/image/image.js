@@ -24,6 +24,8 @@ Page({
   },
 
   onLoad() {
+
+
     this.data.cropperOpt.src = app.data.image
     const {cropperOpt} = this.data
 
@@ -57,15 +59,59 @@ Page({
     })
   },
   getCropperImage() {
-    this.wecropper.getCropperImage((src) => {
-      if (src) {
-        wx.previewImage({
-          current: '', // 当前显示图片的http链接
-          urls: [src], // 需要预览的图片http链接列表
+    wx.showLoading({title: '请稍后~', mask: true})
+    // this.wecropper.getCropperImage((src) => {
+    //   if (src) {
+    //     wx.previewImage({
+    //       current: '', // 当前显示图片的http链接
+    //       urls: [src], // 需要预览的图片http链接列表
+    //     })
+    //   } else {
+    //     console.log('获取图片地址失败，请稍后重试')
+    //   }
+    // })
+
+    this.wecropper.getCropperBase64(base64 => {
+      new Promise(resolve => {
+        wx.request({
+          url: 'https://aip.baidubce.com/oauth/2.0/token',
+          data: {
+            grant_type: 'client_credentials',
+            client_id: 'GAwuddXbuxuQLqi3LerhET2F',
+            client_secret: '2WwLWrpPdC80oxElnbIgs4PIGCBF6hya',
+          },
+          success: res => {
+            resolve(res.data.access_token)
+          },
         })
-      } else {
-        console.log('获取图片地址失败，请稍后重试')
-      }
+      }).then(access_token => {
+        if (!base64) return wx.showToast({title: '识别失败', icon: 'none'})
+        return new Promise(resolve => {
+          wx.request({
+            url: `https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?access_token=${access_token}`,
+            data: {
+              image: base64.split(',')[1],
+            },
+            header: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            method: 'POST',
+            success: res => {
+              wx.hideLoading()
+              const discern = res.data.words_result
+              if (discern) {
+                app.data.discern = discern
+                wx.navigateBack()
+              } else {
+                return wx.showToast({title: '识别失败', icon: 'none'})
+              }
+            },
+          })
+        })
+
+      })
+
+
     })
   },
   touchStart(e) {

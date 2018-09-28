@@ -1,8 +1,7 @@
 import timestamp from '../utils/timestamp'
 import md5 from '../utils/md5'
 
-// export const host = 'https://kd.xiaozhanxiang.com/lxz'
-export const host = 'https://kd.xiaozhanxiang.com/kd/gbpmapi/InnerOpenServlet'
+export const host = 'https://www.szuem.com:8436/gbpmapi/InnerOpenServlet'
 
 export default class ajax {
   static get(url, data) {

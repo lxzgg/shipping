@@ -22,6 +22,16 @@ Page({
 
   onLoad(e) {
     this.initArea()
+
+    // 获取热门城市
+    app.api.getHotCity({openid: app.data.openid}).then(res => {
+      const list = res.tables['0'].rows
+      const hot = []
+      for (let i = 0; i < list.length; i++) {
+        hot.push(list[i].HOTCITY)
+      }
+      this.setData({hot})
+    })
   },
 
   // 初始化城市
@@ -84,7 +94,7 @@ Page({
     const index = e.detail.value[0]
     const cities = this.data.cities
 
-    if (!index) return this.setData({selectCity: [0], areas: [please]})
+    if (!index) return this.setData({selectCity: [0]})
 
     if (index > cities.length - 1) return
 

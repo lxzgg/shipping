@@ -15,9 +15,19 @@ Page({
 
   // 获取收获地址
   getAddress() {
-    app.api.getAddress({openid: app.data.openid, phone: this.data.phone, send: app.data.type}).then(res => {
-      const list = res.tables['0'].rows
-      this.setData({list})
+    wx.showLoading({title: '请稍后~', mask: true})
+    app.load.then(res => {
+      app.api.getAddress({openid: app.data.openid, phone: this.data.phone, send: app.data.type}).then(res => {
+
+        const result = res.rpara['0'].value
+        if (result) {
+          return wx.showToast({title: result, icon: 'none'})
+        }
+
+        const list = res.tables['0'].rows
+        this.setData({list})
+        wx.hideLoading()
+      })
     })
   },
 

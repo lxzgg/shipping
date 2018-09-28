@@ -29,6 +29,7 @@ Page({
   },
 
   btn() {
+    wx.showLoading({title: '请稍后~', mask: true})
     const code = this.data.number
     const name = this.data.name
 
@@ -49,11 +50,19 @@ Page({
 
   // 取消绑定
   unbind() {
+    wx.showLoading({title: '请稍后~', mask: true})
     app.api.app_binding({
       in_type: '解绑', in_account: '', in_name: this.data.number, in_openid: app.data.openid, in_appid: app.data.appid,
     }).then(res => {
-      this.getCode()
-      wx.showToast({title: '解绑成功'})
+
+      const result = res.rpara['0'].value
+      if (result) {
+        wx.showToast({title: result, icon: 'none'})
+      } else {
+        this.getCode()
+        wx.showToast({title: '解绑成功'})
+      }
+
     })
   },
 })
