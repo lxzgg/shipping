@@ -1,3 +1,5 @@
+<view class="code">单号:{{code}}</view>
+
 <view class="process-y">
 
   <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{item.CHECKTIME}}">

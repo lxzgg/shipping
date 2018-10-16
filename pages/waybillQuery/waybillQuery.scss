@@ -1,5 +1,12 @@
 @import "../../common";
 
+.code {
+  display: flex;
+  justify-content: center;
+  font-size: rpx(28);
+  color: #999;
+}
+
 .query {
   display: flex;
   align-items: center;

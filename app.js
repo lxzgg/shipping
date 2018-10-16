@@ -4,7 +4,7 @@ import Map from './utils/bmap-wx.min'
 App({
   ...utils,
 
-  map: new Map({ak: 'UOv7wTII5qmKpz1U4HpZIFX6Z6kHXGoY'}),
+  map: new Map({ak: 'deAFR33M2fRR5IZ63sq8IAXtPgR6gvrX'}),
 
   data: {
     type: '',

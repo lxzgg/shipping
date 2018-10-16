@@ -1,5 +1,6 @@
 {
   "navigationBarBackgroundColor": "#007bff",
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "自助服务 "
+  "navigationBarTitleText": "货物查询",
+  "enablePullDownRefresh": true
 }

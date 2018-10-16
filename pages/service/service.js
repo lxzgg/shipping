@@ -37,6 +37,12 @@ Page({
     this.getOrderList()
   },
 
+  onPullDownRefresh() {
+    wx.showLoading()
+    this.getOrderList()
+    wx.stopPullDownRefresh()
+  },
+
   getOrderList() {
     app.load.then(res => {
       app.api.orderlist({
@@ -45,6 +51,7 @@ Page({
         in_waybillno: '',
         in_signStatus: this.data.status,
       }).then(res => {
+        wx.hideLoading()
         this.setData({
           list: res.tables['0'].rows[0].ID ? res.tables['0'].rows : [],
         })
@@ -54,6 +61,7 @@ Page({
           this.setData({num0: res.tables['0'].rows[0].ID ? res.tables['0'].rows.length : 0})
         }
       })
+
     })
   },
 

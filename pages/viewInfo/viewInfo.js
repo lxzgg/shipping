@@ -7,7 +7,11 @@ Page({
   },
 
   onLoad(e) {
-    app.api.getLogistics({No: e.id, openid: app.data.openid}).then(res => {
+    const code = e.id
+    this.setData({code})
+    app.api.getLogistics({No: code, openid: app.data.openid}).then(res => {
+      console.log(e)
+      console.log(res.tables['0'].rows)
       this.setData({
         list: res.tables['0'].rows,
       })

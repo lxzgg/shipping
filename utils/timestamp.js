@@ -14,28 +14,28 @@ function _getTimestamp(date, pattern, useUTC) {
 
   pattern = pattern || 'YYYY-MM-DD'
 
-  function timestamp() {
-    let match = regex.exec(pattern)
-    if (match) {
-      let increment = method(match[1], useUTC)
-      let val = ''
-      if (!increment[1]) {
-        val = String(date[increment[0]]() + (increment[2] || 0))
-      } else {
-        val = '00' + (date[increment[0]]() + (increment[2] || 0))
-        val = val.slice(-increment[1])
-      }
-      pattern = pattern.replace(match[0], val)
-      timestamp()
-    }
-  }
+  return timestamp(date, pattern, useUTC)
+}
 
-  timestamp(pattern)
+function timestamp(date, pattern, useUTC) {
+  let match = regex.exec(pattern)
+  if (match) {
+    let increment = method(match[1], useUTC)
+    let val = ''
+    if (!increment[1]) {
+      val = String(date[increment[0]]() + (increment[2] || 0))
+    } else {
+      val = '00' + (date[increment[0]]() + (increment[2] || 0))
+      val = val.slice(-increment[1])
+    }
+    pattern = pattern.replace(match[0], val)
+    pattern = timestamp(date, pattern, useUTC)
+  }
   return pattern
 }
 
 function method(key, useUTC) {
-  return ({
+  return {
     YYYY: [useUTC ? 'getUTCFullYear' : 'getFullYear', 4],
     YY: [useUTC ? 'getUTCFullYear' : 'getFullYear', 2],
     MM: [useUTC ? 'getUTCMonth' : 'getMonth', 2, 1],
@@ -49,7 +49,7 @@ function method(key, useUTC) {
     ss: [useUTC ? 'getUTCSeconds' : 'getSeconds', 2],
     s: [useUTC ? 'getUTCSeconds' : 'getSeconds', false],
     ms: [useUTC ? 'getUTCMilliseconds' : 'getMilliseconds', 3],
-  })[key]
+  }[key]
 }
 
 module.exports = function (pattern, date) {

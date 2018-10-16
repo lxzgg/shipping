@@ -6,7 +6,7 @@ Page({
     // 保价
     in_declareinsure: 0,
     // 是否物控
-    in_iswaitcontrol: '是',
+    in_iswaitcontrol: '否',
     // 回单类型
     in_rtnbilltype: '无需返单',
   },
@@ -31,7 +31,8 @@ Page({
 
   // 保存
   save() {
-    app.data.in_declareinsure = this.data.in_declareinsure
+    if (isNaN(Number(this.data.in_declareinsure))) return wx.showToast({title: '请填写正确金额', icon: "none"})
+    app.data.in_declareinsure = Number(this.data.in_declareinsure)
     app.data.in_iswaitcontrol = this.data.in_iswaitcontrol
     app.data.in_rtnbilltype = this.data.in_rtnbilltype
     wx.navigateBack()

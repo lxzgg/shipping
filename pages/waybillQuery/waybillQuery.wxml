@@ -4,6 +4,10 @@
   <view class="btn" bindtap="btn">查询</view>
 </view>
 
+<block wx:if="{{code}}">
+  <view class="code">单号:{{code}}</view>
+</block>
+
 <view class="process-y">
 
   <block wx:for="{{list}}" wx:key="{{index}}" wx:if="{{item.CHECKTIME}}">

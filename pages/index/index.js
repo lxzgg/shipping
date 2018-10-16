@@ -16,7 +16,7 @@ Page({
     },
     service: {
       index: 0,
-      list: ['机场自提', '网点自提', '送货（不含上楼）', '送货上楼'],
+      list: ['网点自提', '送货（不含上楼）', '送货上楼'],
     },
     time: [],
     // 当前时间
@@ -41,7 +41,6 @@ Page({
         wx.hideLoading()
       })
 
-
       app.api.getAddress({openid: app.data.openid, send: '寄'}).then(res => {
         const defaultList = res.tables['0'].rows
         for (let i = 0; i < defaultList.length; i++) {
@@ -62,17 +61,6 @@ Page({
         }
       })
 
-      app.api.getProduct({openid: app.data.openid}).then(res => {
-        const list = res.tables['0'].rows
-        const arr = []
-        for (let i = 0; i < list.length; i++) {
-          arr.push(list[i].ITEM_PRODUCTNAME)
-        }
-        this.data.product.list = arr
-        this.setData({
-          product: this.data.product,
-        })
-      })
 
     })
 
@@ -80,6 +68,25 @@ Page({
 
   // 初始化
   onShow() {
+
+    app.load.then(res => {
+      app.api.getProduct({openid: app.data.openid}).then(res => {
+        const list = res.tables['0'].rows
+        console.log(list)
+        const arr = []
+        const IDarr = []
+        for (let i = 0; i < list.length; i++) {
+          arr.push(list[i].ITEM_PRODUCTNAME)
+          IDarr.push(list[i].ITEM_PRODUCTID)
+        }
+        this.data.product.list = arr
+        this.data.product.IDarr = IDarr
+        this.setData({
+          product: this.data.product,
+        })
+      })
+    })
+
     if (app.data.send) {
       this.setData({send: app.data.send})
     }
@@ -329,7 +336,7 @@ Page({
     const in_rtnbilltype = this.data.in_rtnbilltype
     const in_paymentmethod = this.data.payWay.list[this.data.payWay.index]
     // 产品ID
-    const in_productid = ''
+    const in_productid = this.data.product.IDarr[this.data.product.index]
     const in_product = this.data.product.list[this.data.product.index]
     // 服务类型ID
     const in_delivertypeid = ''
@@ -385,7 +392,7 @@ Page({
     const in_rtnbilltype = this.data.in_rtnbilltype
     const in_paymentmethod = this.data.payWay.list[this.data.payWay.index]
     // 产品ID
-    const in_productid = undefined
+    const in_productid = this.data.product.IDarr[this.data.product.index]
     const in_product = this.data.product.list[this.data.product.index]
     // 服务类型ID
     const in_delivertypeid = undefined

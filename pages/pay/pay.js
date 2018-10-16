@@ -35,7 +35,7 @@ Page({
       // 商品描述
       body: '快递费',
       // 订单号
-      out_trade_no: randomStringing(),
+      out_trade_no: this.data.list[0].value,
       // 标价金额
       total_fee: Number(this.data.list[8].value) * 100,
       // 终端IP
@@ -77,7 +77,7 @@ Page({
         in_time_end: app.timestamp('YYYY-MM-DD HH:mm:ss'),
         in_total_fee: this.data.list[7].value,
         in_PayType: '微信支付',
-        in_transaction_id: '',
+        in_transaction_id: this.data.list[0].value,
       }).then(res => {
         wx.showToast({title: res.rpara['0'].value, icon: 'none'})
       })

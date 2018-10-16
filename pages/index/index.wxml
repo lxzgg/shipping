@@ -86,7 +86,7 @@
 
 <block wx:if="{{!fill}}">
   <view class="input-cell">
-    <textarea placeholder="有什么话对快递小哥说？" value="{{message}}"
+    <textarea placeholder="有什么话对联运通小哥说？" value="{{message}}"
               data-name="message" bindblur="getInput" bindinput="getInput"></textarea>
   </view>
 </block>

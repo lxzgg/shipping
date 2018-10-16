@@ -69,7 +69,6 @@ Page({
 
     const address = app.data.address
 
-    console.log(address)
 
     if (address.length === 0) return
 
@@ -172,7 +171,7 @@ Page({
 
     if (!discern) return
 
-    const name = names.exec(discern)
+    const name = names.exec(discern)[0]
 
     const phone = phoneReg.exec(discern) ? phoneReg.exec(discern)[0] : ''
     let province = ''

@@ -2,12 +2,25 @@ const app = getApp()
 
 Page({
 
-  data: {},
+  data: {
+    page: 0,
+    list: [],
+  },
 
   onLoad() {
-    app.api.payment_history({openid: app.data.openid, in_pagenumber: 0}).then(res => {
+    this.getPayment_history()
+  },
+
+  onReachBottom() {
+    ++this.data.page
+    this.getPayment_history()
+  },
+
+
+  getPayment_history() {
+    app.api.payment_history({openid: app.data.openid, in_pagenumber: this.data.page}).then(res => {
       this.setData({
-        list: res.tables['0'].rows,
+        list: this.data.list.concat(res.tables['0'].rows),
       })
     })
   },

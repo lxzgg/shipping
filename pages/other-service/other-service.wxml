@@ -10,8 +10,8 @@
   <view>物控服务</view>
   <view class="value">
     <radio-group bindchange="material_control">
-      <radio value="是" color="#007bff" checked="{{in_iswaitcontrol==='是'}}">是</radio>
       <radio value="否" color="#007bff" checked="{{in_iswaitcontrol==='否'}}">否</radio>
+      <radio value="是" color="#007bff" checked="{{in_iswaitcontrol==='是'}}">是</radio>
     </radio-group>
   </view>
 </view>

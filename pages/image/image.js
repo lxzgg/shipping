@@ -77,8 +77,8 @@ Page({
           url: 'https://aip.baidubce.com/oauth/2.0/token',
           data: {
             grant_type: 'client_credentials',
-            client_id: 'GAwuddXbuxuQLqi3LerhET2F',
-            client_secret: '2WwLWrpPdC80oxElnbIgs4PIGCBF6hya',
+            client_id: '4mdywsTKjqKicDrXlKtZsmA8',
+            client_secret: 'xfddz0Yh6nmZOrf3VmXxYfyCMaKy4ga1',
           },
           success: res => {
             resolve(res.data.access_token)
