@@ -46,6 +46,7 @@ Page({
   },
 
   onLoad(e) {
+    console.log(e)
     this.data.id = e.id
     if (!e.id) {
       app.data.address = []

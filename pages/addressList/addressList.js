@@ -4,12 +4,15 @@ Page({
 
   data: {},
 
-  onLoad() {
-    wx.setNavigationBarTitle({title: `${app.data.type}件地址簿`})
-    this.setData({type: app.data.type})
+  onLoad(e) {
+    const type = e.type || app.data.type
+    app.data.type = type
+    wx.setNavigationBarTitle({title: `${type}件地址簿`})
+    this.setData({type: type})
   },
 
   onShow() {
+    console.log(this.data.type)
     this.getAddress()
   },
 
@@ -18,7 +21,7 @@ Page({
     wx.showLoading({title: '请稍后~', mask: true})
     app.load.then(res => {
       console.log('开始获取地址')
-      app.api.getAddress({openid: app.data.openid, phone: this.data.phone, send: app.data.type}).then(res => {
+      app.api.getAddress({openid: app.data.openid, phone: this.data.phone, send: this.data.type}).then(res => {
 
         const result = res.rpara['0'].value
         if (result) {
@@ -75,7 +78,7 @@ Page({
       area: item.AREA,
       details: item.ADDRESS_DETAIL,
       isDefault: '是',
-      send: app.data.type,
+      send: this.data.type,
     }).then(res => {
       this.getAddress()
     })
@@ -85,10 +88,10 @@ Page({
   // 选中
   select(e) {
     const {NAME, MOBILE, ADDRESS_DETAIL, PROVINCE, CITY, AREA} = e.currentTarget.dataset.item
-    console.log(app.data.type)
-    if (app.data.type === '寄') {
+
+    if (this.data.type === '寄') {
       app.data.send = {NAME, MOBILE, ADDRESS_DETAIL, PROVINCE, CITY, AREA}
-    } else if (app.data.type === '收') {
+    } else if (this.data.type === '收') {
       app.data.take = {NAME, MOBILE, ADDRESS_DETAIL, PROVINCE, CITY, AREA}
     }
     wx.navigateBack()

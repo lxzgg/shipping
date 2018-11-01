@@ -1,112 +1,121 @@
 {
-  "description": "项目配置文件。",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": false,
-    "es6": true,
-    "postcss": true,
-    "minified": true,
-    "newFeature": true,
-    "nodeModules": false
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.3.0",
-  "appid": "wx6fd1e3873d3ec044",
-  "projectname": "shipping",
-  "isGameTourist": false,
-  "scripts": {
-    "beforeCompile": "",
-    "beforePreview": "",
-    "beforeUpload": ""
-  },
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "plugin": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "currentL": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": 10,
-      "list": [
-        {
-          "id": 0,
-          "name": "添加地址",
-          "pathName": "pages/send/send",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "运单查询",
-          "pathName": "pages/waybillQuery/waybillQuery",
-          "query": ""
-        },
-        {
-          "id": 2,
-          "name": "图片裁剪",
-          "pathName": "pages/image/image",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "地址列表",
-          "pathName": "pages/addressList/addressList",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "自助服务",
-          "pathName": "pages/service/service",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "支付记录",
-          "pathName": "pages/payInfo/payInfo",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "地址",
-          "pathName": "pages/address/address",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "增值服务",
-          "pathName": "pages/other-service/other-service",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "my",
-          "pathName": "pages/my/my",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "客户编码",
-          "pathName": "pages/code/code",
-          "query": ""
-        },
-        {
-          "id": -1,
-          "name": "支付",
-          "pathName": "pages/pay/pay"
-        }
-      ]
-    }
-  }
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wx6fd1e3873d3ec044",
+	"projectname": "shipping",
+	"isGameTourist": false,
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 11,
+			"list": [
+				{
+					"id": 0,
+					"name": "添加地址",
+					"pathName": "pages/send/send",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "运单查询",
+					"pathName": "pages/waybillQuery/waybillQuery",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "图片裁剪",
+					"pathName": "pages/image/image",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "地址列表",
+					"pathName": "pages/addressList/addressList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "自助服务",
+					"pathName": "pages/service/service",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "支付记录",
+					"pathName": "pages/payInfo/payInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "地址",
+					"pathName": "pages/address/address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "增值服务",
+					"pathName": "pages/other-service/other-service",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "客户编码",
+					"pathName": "pages/code/code",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "支付",
+					"pathName": "pages/pay/pay",
+					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "寄件地址簿",
+					"pathName": "pages/addressList/addressList",
+					"query": "type=寄",
+					"scene": "1035",
+					"referrerInfo": {}
+				}
+			]
+		}
+	}
 }
